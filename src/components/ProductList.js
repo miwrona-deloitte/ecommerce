@@ -16,7 +16,6 @@ const ProductList = () => {
                   <span>{product.name}</span>
                   <img src={product.url} width="100" alt={product.name} />
                 </div>
-                {console.log(product.url)}
               </Link>
               <span>{product.price} $</span>
             </div>

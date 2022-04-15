@@ -7,20 +7,24 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./components/Cart";
 import Catalog from "./pages/Catalog";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="catalog" element={<Catalog />} />
-        <Route path="pdp" element={<ProductDetailsPage />}>
-          <Route path=":productId" />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="catalog" element={<Catalog />} />
+          <Route path="pdp" element={<ProductDetailsPage />}>
+            <Route path=":productId" />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 
