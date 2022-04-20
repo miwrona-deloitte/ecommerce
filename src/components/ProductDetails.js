@@ -18,7 +18,8 @@ const ProductDetails = (props) => {
 
   return (
     <>
-      <Link to="/catalog">Catalog</Link>
+      <Link to="/catalog">Catalog</Link> | {" "} 
+      <Link to="/cart">Cart</Link>
       <div>
         <span>{product.name}</span>
         <img src={imgUrl} width="400" alt={imgUrl} />

@@ -1,11 +1,13 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { getProducts } from "../products";
 
-const ProductList = () => {
+const ProductList: React.FC = () => {
   const products = getProducts();
   return (
     <div>
-      <Link to="/">Home</Link>
+      <Link to="/">Home</Link> | {" "} 
+      <Link to="/cart">Cart</Link>
       <ul>
         {products.map((product) => (
           <li key={product.id}>
