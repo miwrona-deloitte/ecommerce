@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { cartActions } from "../store";
 import React from "react";
 
-const ProductDetails: React.FC<{ productId: number }> = (props) => {
+const ProductDetails: React.FC<{ productId: string | undefined }> = (props) => {
   interface Item {
     id: number;
     name: string;

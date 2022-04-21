@@ -1,8 +1,8 @@
 import ProductDetails from "../components/ProductDetails";
 import { useParams } from "react-router-dom";
 
-const ProductDetailsPage = () => {
-  const params = useParams();
+const ProductDetailsPage: React.FC = () => {
+  const params = useParams<{ productId: string }>();
   return <ProductDetails productId={params.productId}></ProductDetails>;
 };
 

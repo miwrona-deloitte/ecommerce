@@ -1,6 +1,6 @@
 import ProductList from "../components/ProductList";
 
-const Catalog = () => {
+const Catalog: React.FC = () => {
   return (
     <>
       <h1>Catalog</h1>

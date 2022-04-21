@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const Cart = () => {
+const Cart: React.FC = () => {
   interface Item {
     id: number;
     name: string;
