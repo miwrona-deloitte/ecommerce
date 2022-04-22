@@ -1,22 +1,9 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 const Cart: React.FC = () => {
-  interface Item {
-    id: number;
-    name: string;
-    price: string;
-    url: string;
-  }
-
-  interface State {
-    cart: {
-      items: Item[];
-      counter: number;
-    };
-  }
-
-  const cartItems = useSelector((state: State) => state.cart.items);
+  const cartItems = useSelector((state: RootState) => state.cart.items);
 
   return (
     <>

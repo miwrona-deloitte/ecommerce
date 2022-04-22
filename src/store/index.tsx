@@ -1,6 +1,4 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-
-
 const initialCartState = { items: [], counter: 0 };
 
 const cartSlice = createSlice({
@@ -8,7 +6,7 @@ const cartSlice = createSlice({
   initialState: initialCartState,
   reducers: {
     addToCart(state, action) {
-      return { items: state.items.concat(action.payload.product) , counter: 0};
+      return { items: state.items.concat(action.payload.product), counter: 0 };
     },
   },
 });
@@ -20,4 +18,17 @@ const store = configureStore({
 });
 
 export default store;
+interface Item {
+  id: number;
+  name: string;
+  price: string;
+  url: string;
+}
+
+export interface RootState {
+  cart: {
+    items: Item[];
+    counter: number;
+  };
+}
 export const cartActions = cartSlice.actions;
