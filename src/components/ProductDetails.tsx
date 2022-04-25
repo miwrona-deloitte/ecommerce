@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../store";
 import React from "react";
+import Layout from "./Layout/Layout";
 
 const ProductDetails: React.FC<{ productId: string | undefined }> = (props) => {
   interface Item {
@@ -30,14 +31,13 @@ const ProductDetails: React.FC<{ productId: string | undefined }> = (props) => {
   const productName = typeof product == "object" ? product.name : "";
 
   return (
-    <>
-      <Link to="/catalog">Catalog</Link> | <Link to="/cart">Cart</Link>
+    <Layout>
       <div>
         <span>{productName}</span>
         <img src={imgUrl} width="400" alt={imgUrl} />
         <button onClick={addToCartHandler}>Add To Cart</button>
       </div>
-    </>
+    </Layout>
   );
 };
 

@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
+import Layout from "./Layout/Layout";
 
 const Cart: React.FC = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
   return (
-    <>
-      <Link to="/">Home</Link>
+    <Layout>
       <h1>Cart</h1>
       {cartItems.map((item) => (
         <li key={item.id}>
@@ -19,7 +19,7 @@ const Cart: React.FC = () => {
         </li>
       ))}
       <span>Total: </span>
-    </>
+    </Layout>
   );
 };
 

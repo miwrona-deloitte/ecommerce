@@ -5,9 +5,6 @@ import { getProducts } from "../products";
 const ProductList: React.FC = () => {
   const products = getProducts();
   return (
-    <div>
-      <Link to="/">Home</Link> | {" "} 
-      <Link to="/cart">Cart</Link>
       <ul>
         {products.map((product) => (
           <li key={product.id}>
@@ -24,7 +21,6 @@ const ProductList: React.FC = () => {
           </li>
         ))}
       </ul>
-    </div>
   );
 };
 
