@@ -1,12 +1,28 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-const initialCartState = { items: [], counter: 0 };
+interface Item {
+  id: number;
+  name: string;
+  price: string;
+  url: string;
+}
+const initialCartState: { items: Item[]; counter: number } = {
+  items: [],
+  counter: 0,
+};
 
 const cartSlice = createSlice({
   name: "cart",
   initialState: initialCartState,
   reducers: {
     addToCart(state, action) {
-      return { items: state.items.concat(action.payload.product), counter: 0 };
+      const payloadProduct = action.payload.product;
+      const id = payloadProduct["id"];
+      if (state.items.find((stateProduct) => stateProduct.id === id)) {
+        //increment qty
+      } else {
+        const updatedItems = state.items.concat(payloadProduct);
+        return { items: updatedItems, counter: 0 };
+      }
     },
   },
 });
