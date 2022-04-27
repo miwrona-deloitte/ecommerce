@@ -12,6 +12,7 @@ const Cart: React.FC = () => {
           <div>
             <h2>{item.name}</h2>
             <span>{item.price}</span>
+            <span> QTY: {item.qty}</span>
             <img src={item.url} width="50" alt={item.name + " picture"} />
           </div>
         </li>

@@ -1,9 +1,14 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-interface Item {
+
+interface Product {
   id: number;
   name: string;
   price: string;
   url: string;
+}
+
+interface Item extends Product {
+  qty: number;
 }
 const initialCartState: { items: Item[]; counter: number } = {
   items: [],
@@ -15,12 +20,21 @@ const cartSlice = createSlice({
   initialState: initialCartState,
   reducers: {
     addToCart(state, action) {
-      const payloadProduct = action.payload.product;
+      let payloadProduct = action.payload.product;
       const id = payloadProduct["id"];
-      if (state.items.find((stateProduct) => stateProduct.id === id)) {
-        //increment qty
+      const findIndex = state.items.findIndex(
+        (stateProduct) => stateProduct.id === id
+      );
+      if (findIndex >= 0) {
+        if (isNaN(state.items[findIndex]["qty"])) {
+          state.items[findIndex]["qty"] = 1;
+        }
+        state.items[findIndex]["qty"] =
+          state.items[findIndex]["qty"] + action.payload.qty;
       } else {
-        const updatedItems = state.items.concat(payloadProduct);
+        const item = payloadProduct;
+        item["qty"] = 1;
+        const updatedItems = state.items.concat(item);
         return { items: updatedItems, counter: 0 };
       }
     },
@@ -48,3 +62,4 @@ export interface RootState {
   };
 }
 export const cartActions = cartSlice.actions;
+export type { Product, Item };
