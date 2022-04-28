@@ -15,28 +15,37 @@ const initialCartState: { items: Item[]; counter: number } = {
   counter: 0,
 };
 
+const helper = {
+  findInArrById: (arr: { id: number }[], id: number) => {
+    return arr.findIndex((item) => item.id === id);
+  },
+};
+
 const cartSlice = createSlice({
   name: "cart",
   initialState: initialCartState,
   reducers: {
     addToCart(state, action) {
-      let payloadProduct = action.payload.product;
-      const id = payloadProduct["id"];
-      const findIndex = state.items.findIndex(
-        (stateProduct) => stateProduct.id === id
-      );
+      const payloadProduct = action.payload.product;
+      const findIndex = helper.findInArrById(state.items, payloadProduct["id"]);
       if (findIndex >= 0) {
-        if (isNaN(state.items[findIndex]["qty"])) {
-          state.items[findIndex]["qty"] = 1;
-        }
         state.items[findIndex]["qty"] =
           state.items[findIndex]["qty"] + action.payload.qty;
       } else {
         const item = payloadProduct;
-        item["qty"] = 1;
+        if (item["qty"] === undefined) {
+          item["qty"] = 1;
+        }
         const updatedItems = state.items.concat(item);
         return { items: updatedItems, counter: 0 };
       }
+    },
+    removeFromCart(state, action) {
+      const findIndex = helper.findInArrById(
+        state.items,
+        action.payload.itemId
+      );
+      state.items.splice(findIndex, 1);
     },
   },
 });
