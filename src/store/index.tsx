@@ -47,6 +47,23 @@ const cartSlice = createSlice({
       );
       state.items.splice(findIndex, 1);
     },
+    increaseQty(state, action) {
+      const payloadProduct = action.payload.product;
+      const findIndex = helper.findInArrById(state.items, payloadProduct["id"]);
+      state.items[findIndex]["qty"] =
+        state.items[findIndex]["qty"] + action.payload.qty;
+    },
+    decreaseQty(state, action) {
+      const findIndex = helper.findInArrById(
+        state.items,
+        action.payload.product["id"]
+      );
+      if (state.items[findIndex]["qty"] > 1) {
+        state.items[findIndex]["qty"]--;
+      } else {
+        state.items.splice(findIndex, 1);
+      }
+    },
   },
 });
 
