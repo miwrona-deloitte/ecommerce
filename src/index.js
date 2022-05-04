@@ -9,22 +9,34 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import { Provider } from "react-redux";
 import store from "./store";
 import Layout from "./components/Layout/Layout";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+} from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: "https://graphql.contentful.com/content/v1/spaces/dzz5eytt1nwx/environments/master?access_token=7ww_8pRJFo1aJaxEkmW30hAPyPII3SecDUhwuaIHPZM",
+  cache: new InMemoryCache(),
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="cart" element={<Cart />} />
-            <Route path="catalog" element={<Catalog />} />
-            <Route path="pdp" element={<ProductDetailsPage />}>
-              <Route path=":productId" />
-            </Route>
-          </Routes>
-        </Layout>
+        <ApolloProvider client={client}>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<App />} />
+              <Route path="cart" element={<Cart />} />
+              <Route path="catalog" element={<Catalog />} />
+              <Route path="pdp" element={<ProductDetailsPage />}>
+                <Route path=":productId" />
+              </Route>
+            </Routes>
+          </Layout>
+        </ApolloProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
