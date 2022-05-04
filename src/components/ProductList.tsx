@@ -1,40 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getProducts } from "../products";
 import { gql, useQuery } from "@apollo/client";
 
 const ProductList: React.FC = () => {
-  const products = getProducts();
-  return (
-    <>
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            <div>
-              <span>ID: {product.id}</span>
-              <Link to={`/pdp/${product.id}`}>
-                <div>
-                  <span>{product.name}</span>
-                  <img src={product.url} width="100" alt={product.name} />
-                </div>
-              </Link>
-              <span>{product.price} $</span>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <Products />
-    </>
-  );
-};
-
-const Products = () => {
   const PRODUCTS_FROM_CMS = gql`
     query {
       productCollection(limit: 10) {
         items {
           name
           ecommmerceId
+          price
+          picture {
+            url
+            title
+          }
         }
       }
     }
@@ -46,14 +25,25 @@ const Products = () => {
 
   const productsContentful = data.productCollection.items;
   return (
-    <div>
+    <>
       <h2>Products from Contentful</h2>
       <ul>
-        {productsContentful.map((item: any) => (
-          <li key={item.ecommmerceId}>{item.name}</li>
+        {productsContentful.map((product: any) => (
+          <li key={product.ecommmerceId}>
+            <div>
+              <span>ID: {product.ecommmerceId}</span>
+              <Link to={`/pdp/${product.ecommmerceId}`}>
+                <div>
+                  <span>{product.name}</span>
+                  <img src={product.picture.url} width="100" alt={product.picture.name} />
+                </div>
+              </Link>
+              <span>{product.price} $</span>
+            </div>
+          </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 
