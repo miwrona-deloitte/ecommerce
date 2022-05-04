@@ -1,15 +1,7 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { Product } from "../model/Catalog/Product";
+import { Item } from "./../model/Cart/Item";
 
-interface Product {
-  id: number;
-  name: string;
-  price: string;
-  url: string;
-}
-
-interface Item extends Product {
-  qty: number;
-}
 const initialCartState: { items: Item[]; counter: number } = {
   items: [],
   counter: 0,
@@ -79,13 +71,6 @@ const store = configureStore({
 });
 
 export default store;
-interface Item {
-  id: number;
-  name: string;
-  price: string;
-  url: string;
-}
-
 export interface RootState {
   cart: {
     items: Item[];
