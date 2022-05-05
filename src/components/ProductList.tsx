@@ -21,12 +21,16 @@ const ProductList: React.FC = () => {
   const { loading, error, data } = useQuery(PRODUCTS_FROM_CMS);
   if (loading) return <div>'Loading...'</div>;
 
-  if (error) return <span>`Error! ${error.message}`</span>;
+  if (error) {
+    // log error.message
+    return <span>`No products found.`</span>;
+  }
+  
 
   const productsContentful = data.productCollection.items;
   return (
     <>
-      <h2>Products from Contentful</h2>
+      <h2>Products</h2>
       <ul>
         {productsContentful.map((product: any) => (
           <li key={product.ecommmerceId}>
