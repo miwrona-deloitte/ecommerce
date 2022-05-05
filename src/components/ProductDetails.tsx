@@ -1,25 +1,36 @@
-import { getProducts } from "../products";
 import { useDispatch } from "react-redux";
 import { cartActions, Product } from "../store";
 import React from "react";
+import { useQuery } from "@apollo/client";
+import { GET_PRODUCT_BY_ID } from "../graphql/query/product";
+import { CMSProduct, parseCmsProductToProduct } from "../model/Catalog/Product";
 
 const ProductDetails: React.FC<{ productId: string | undefined }> = (props) => {
   const dispatch = useDispatch();
-  const products: Product[] = getProducts();
-  const product: Product | undefined = products.find(
-    (product) => product.id === Number(props.productId)
-  );
+  const { loading, error, data } = useQuery(GET_PRODUCT_BY_ID, {
+    variables: { productId: props.productId },
+  });
+  let cmsProduct: CMSProduct | undefined = undefined;
+  if (loading) return <div>'Loading...'</div>;
+  if (data) {
+    cmsProduct = data.productCollection.items[0];
+  }
+  if (error) {
+    // log error.message
+    return <span>`No products found.`</span>;
+  }
+  const product = parseCmsProductToProduct(cmsProduct);
   let imgUrl = "/../../pictures/default.jpeg";
-  if (typeof product == "object") {
-    imgUrl = "/../../" + product.url;
+  let productName = "";
+  if (product !== null && typeof product === "object") {
+    imgUrl = product.url;
+    productName = product.name;
   }
 
   const addToCartHandler = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     dispatch(cartActions.addToCart({ product: product, qty: 1 }));
   };
-
-  const productName = typeof product == "object" ? product.name : "";
 
   return (
     <div>

@@ -1,31 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
+import { GET_PRODUCTS } from "../graphql/query/product";
 
 const ProductList: React.FC = () => {
-  const PRODUCTS_FROM_CMS = gql`
-    query {
-      productCollection(limit: 10) {
-        items {
-          name
-          ecommmerceId
-          price
-          picture {
-            url
-            title
-          }
-        }
-      }
-    }
-  `;
-  const { loading, error, data } = useQuery(PRODUCTS_FROM_CMS);
+  const { loading, error, data } = useQuery(GET_PRODUCTS);
   if (loading) return <div>'Loading...'</div>;
 
   if (error) {
     // log error.message
     return <span>`No products found.`</span>;
   }
-  
 
   const productsContentful = data.productCollection.items;
   return (
@@ -33,13 +18,17 @@ const ProductList: React.FC = () => {
       <h2>Products</h2>
       <ul>
         {productsContentful.map((product: any) => (
-          <li key={product.ecommmerceId}>
+          <li key={product.ecommerceId}>
             <div>
-              <span>ID: {product.ecommmerceId}</span>
-              <Link to={`/pdp/${product.ecommmerceId}`}>
+              <span>ID: {product.ecommerceId}</span>
+              <Link to={`/pdp/${product.ecommerceId}`}>
                 <div>
                   <span>{product.name}</span>
-                  <img src={product.picture.url} width="100" alt={product.picture.name} />
+                  <img
+                    src={product.picture.url}
+                    width="100"
+                    alt={product.picture.name}
+                  />
                 </div>
               </Link>
               <span>{product.price} $</span>
