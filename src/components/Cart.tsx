@@ -5,6 +5,7 @@ import QtyBlock from "./Cart/QtyBlock";
 
 const Cart: React.FC = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
+  const cartTotal = useSelector((state: RootState) => state.cart.total);
 
   return (
     <>
@@ -20,7 +21,7 @@ const Cart: React.FC = () => {
           </div>
         </li>
       ))}
-      <span>Total: </span>
+      <span>Total: {cartTotal.toFixed(2)}</span>
     </>
   );
 };

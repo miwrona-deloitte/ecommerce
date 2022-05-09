@@ -2,9 +2,10 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { Product } from "../model/Catalog/Product";
 import { Item } from "./../model/Cart/Item";
 
-const initialCartState: { items: Item[]; counter: number } = {
+const initialCartState: { items: Item[]; counter: number; total: any } = {
   items: [],
   counter: 0,
+  total: 0,
 };
 
 const helper = {
@@ -24,13 +25,23 @@ const cartSlice = createSlice({
         state.items[findIndex]["qty"] =
           state.items[findIndex]["qty"] + action.payload.qty;
         state.counter++;
+        const updatedTotal =
+          state.total +
+          Number(state.items[findIndex].price.replaceAll(/\s/g, "")) *
+            action.payload.qty;
+        state.total = updatedTotal;
       } else {
         const item = payloadProduct;
         if (item["qty"] === undefined) {
           item["qty"] = 1;
         }
         const updatedItems = state.items.concat(item);
-        return { items: updatedItems, counter: state.counter + 1 };
+        return {
+          items: updatedItems,
+          counter: state.counter + 1,
+          total:
+            state.total + Number(payloadProduct.price.replaceAll(/\s/g, "")),
+        };
       }
     },
     removeFromCart(state, action) {
@@ -40,6 +51,9 @@ const cartSlice = createSlice({
       );
       const itemQty = state.items[findIndex]["qty"];
       state.counter = state.counter - itemQty;
+      state.total =
+        state.total -
+        Number(state.items[findIndex].price.replaceAll(/\s/g, "")) * itemQty;
       state.items.splice(findIndex, 1);
     },
     increaseQty(state, action) {
@@ -48,6 +62,11 @@ const cartSlice = createSlice({
       state.items[findIndex]["qty"] =
         state.items[findIndex]["qty"] + action.payload.qty;
       state.counter++;
+      const updatedTotal =
+        state.total +
+        Number(state.items[findIndex].price.replaceAll(/\s/g, "")) *
+          action.payload.qty;
+      state.total = updatedTotal;
     },
     decreaseQty(state, action) {
       const findIndex = helper.findInArrById(
@@ -60,6 +79,11 @@ const cartSlice = createSlice({
         state.items.splice(findIndex, 1);
       }
       state.counter--;
+      const updatedTotal =
+        state.total -
+        Number(state.items[findIndex].price.replaceAll(/\s/g, "")) *
+          action.payload.qty;
+      state.total = updatedTotal;
     },
   },
 });
@@ -75,6 +99,7 @@ export interface RootState {
   cart: {
     items: Item[];
     counter: number;
+    total: number;
   };
 }
 export const cartActions = cartSlice.actions;
