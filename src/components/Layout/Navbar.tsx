@@ -4,22 +4,54 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import Minicart from '../Minicart';
+import './Navbar.scss';
+
+const Logo = () => <div className='logo'>Homly</div>;
+
+const Menu = () => (
+  <nav className='menu'>
+    <Link to='/'>Home</Link>
+    <Link to='/catalog'>New Collections</Link>
+    <Link to='/catalog'>Decorations</Link>
+    <Link to='/catalog'>Furniture</Link>
+  </nav>
+);
 
 const Tools = () => {
   const counter = useSelector((state: RootState) => state.cart.counter);
   const [showMinicart, setShowMinicart] = useState(false);
   return (
-    <span style={{ position: 'absolute', right: '10%', cursor: 'pointer' }}>
-      {counter}
-      <img
-        onClick={() => {
-          setShowMinicart(!showMinicart);
-        }}
-        src='/../../../pictures/cart.png'
-        width='30px'
-        alt='cart icon'
-      />
-    </span>
+    <div className='tools'>
+      <ul>
+        <li>
+          <span>
+            <img src='/../../../pictures/search.svg' alt='search icon' />
+          </span>
+        </li>
+        <li>
+          <span>
+            <img src='/../../../pictures/profile.svg' alt='profile icon' />
+          </span>
+        </li>
+        <li>
+          <span>
+            <img src='/../../../pictures/heart.svg' alt='heart icon' />
+          </span>
+        </li>
+        <li>
+          <span>
+            <span className='counter'>{counter}</span>
+            <img
+              onClick={() => {
+                setShowMinicart(!showMinicart);
+              }}
+              src='/../../../pictures/basket.svg'
+              alt='cart icon'
+            />
+          </span>
+        </li>
+      </ul>
+    </div>
   );
 };
 
@@ -27,10 +59,11 @@ const Navbar = () => {
   const [showMinicart, setShowMinicart] = useState(false);
   return (
     <>
-      <div>
-        <nav style={{ textAlign: 'center' }} className='navbar'>
-          <Link to='/'>Home</Link> | <Link to='/cart'>Cart</Link> | <Link to='/catalog'>Catalog</Link>
-        </nav>
+      <div className='navbar'>
+        <div className='leftWrapper'>
+          <Logo />
+          <Menu />
+        </div>
         <Tools />
       </div>
       {showMinicart && <Minicart />}

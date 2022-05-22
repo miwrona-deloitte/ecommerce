@@ -1,2 +1,57 @@
 .navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 135px;
+  font-family: 'Poppins', sans-serif;
+  .leftWrapper {
+    display: flex;
+    line-height: 33px;
+    .logo {
+      font-size: 22px;
+      text-transform: uppercase;
+      text-align: justify;
+      letter-spacing: 0.34em;
+    }
+
+    .menu {
+      text-align: center;
+      margin-left: 50px;
+      display: flex;
+      align-items: center;
+
+      a {
+        font-size: 12px;
+        // line-height: 18px;
+        margin-right: 15px;
+        text-decoration: none;
+        color: black;
+        font-weight: 400;
+        opacity: 0.5;
+        text-transform: uppercase;
+      }
+      a:first-of-type {
+        opacity: 1;
+        font-weight: 500;
+      }
+    }
+  }
+  .tools {
+    cursor: pointer;
+    ul {
+      display: flex;
+      justify-content: space-between;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 193px;
+      li {
+        line-height: 33px;
+      }
+    }
+    .counter {
+      position: relative;
+      bottom: 13px;
+      left: 20px;
+    }
+  }
 }
