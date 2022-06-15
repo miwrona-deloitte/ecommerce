@@ -1,5 +1,6 @@
 import './Furniture.scss';
 import { useState } from 'react';
+import Filters from './Filters';
 
 type Props = { product: Product };
 
@@ -28,8 +29,10 @@ const ProductItem = (props: Props) => {
     <div>
       <img src={'pictures/' + product.img} alt={product.img} width='350' height='350' />
       <div className='details'>
-        <div className='name'>{product.name}</div>
-        <div className='price'>{product.price + ' zł'}</div>
+        <div className='caption'>
+          <div className='name'>{product.name}</div>
+          <div className='price'>{product.price + ' zł'}</div>
+        </div>
         {/* <div className='color-variant'>{product.color}</div> */}
         <div className='color-variant'>
           {colors.map(color => (
@@ -103,6 +106,7 @@ const Furniture: React.FC = () => {
   ];
   return (
     <>
+      <Filters />
       <div className='container'>
         {products.map(product => (
           <ProductItem product={product} key={product.id} />

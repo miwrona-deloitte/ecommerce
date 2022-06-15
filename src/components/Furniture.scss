@@ -3,11 +3,28 @@
   display: grid;
   column-gap: 57px;
   row-gap: 20px;
-  grid-template-columns: repeat(3, minmax(350px, 1fr));
+  // grid-template-columns: repeat(3, minmax(350px, 1fr));
+  grid-template-columns: repeat(3, 350px);
   grid-template-rows: 421px 421px 421px;
+
+  .details {
+    margin-top: 8px;
+    .caption {
+      display: flex;
+      justify-content: space-between;
+      line-height: 21px;
+      font-size: 14px;
+      .price {
+        font-weight: 600;
+      }
+      .name {
+      }
+    }
+  }
 
   .color-variant {
     display: flex;
+    margin-top: 7px;
     .circle {
       background-color: #4f311c;
       border-radius: 50%;

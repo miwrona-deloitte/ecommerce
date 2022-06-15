@@ -24,31 +24,27 @@ const Tools = () => {
     <div className='tools'>
       <ul>
         <li>
-          <span>
-            <img src='/../../../pictures/search.svg' alt='search icon' />
-          </span>
+          <img src='/../../../pictures/search.svg' alt='search icon' />
+          <span className='desc'>Search</span>
         </li>
         <li>
-          <span>
-            <img src='/../../../pictures/profile.svg' alt='profile icon' />
-          </span>
+          <img src='/../../../pictures/profile.svg' alt='profile icon' />
+          <span className='desc'>Profile</span>
         </li>
         <li>
-          <span>
-            <img src='/../../../pictures/heart.svg' alt='heart icon' />
-          </span>
+          <img src='/../../../pictures/heart.svg' alt='heart icon' />
+          <span className='desc'>Liked</span>
         </li>
         <li>
-          <span>
-            <span className='counter'>{counter}</span>
-            <img
-              onClick={() => {
-                setShowMinicart(!showMinicart);
-              }}
-              src='/../../../pictures/basket.svg'
-              alt='cart icon'
-            />
-          </span>
+          {/* <span className='counter'>{counter}</span> */}
+          <img
+            onClick={() => {
+              setShowMinicart(!showMinicart);
+            }}
+            src='/../../../pictures/basket.svg'
+            alt='cart icon'
+          />
+          <span className='desc'>Basket</span>
         </li>
       </ul>
     </div>
