@@ -12,6 +12,7 @@ const CatalogItem = (props: Props) => {
   return (
     <div className='catalog-item'>
       <div className='picture-group'>
+        <div className='overlay-container'></div>
         <div className='overlay'>
           <div className='overlay-btn'>See product</div>
           <div className='actions'>

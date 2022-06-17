@@ -5,15 +5,21 @@
   }
   .picture-group:hover {
     cursor: pointer;
-    background-color: #2e2119;
-    opacity: 0.4;
     .overlay {
       opacity: 1;
-      visibility: visible;
+    }
+    .overlay-container {
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      background-color: #2e2119;
+      opacity: 0.4;
     }
   }
+  .overlay-container {
+    opacity: 0;
+  }
   .overlay {
-    visibility: hidden;
     position: absolute;
     top: calc(50% - 44px / 2);
     left: calc((350px - 217px) / 2);
