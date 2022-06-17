@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cart from './components/Cart';
 import Catalog from './pages/Catalog';
 import Furniture from './components/Furniture';
+import Homepage from './components/Homepage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import { Provider } from 'react-redux';
 import store from './store';
@@ -32,6 +33,7 @@ root.render(
                 <Route path=':productId' />
               </Route>
               <Route path='furniture' element={<Furniture />} />
+              <Route path='home' element={<Homepage />} />
             </Routes>
           </Layout>
         </ApolloProvider>

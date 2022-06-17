@@ -6,13 +6,16 @@ import { RootState } from '../../store';
 import Minicart from '../Minicart';
 import './Navbar.scss';
 
-const Logo = () => <div className='logo'>Homly</div>;
-
+const Logo = () => (
+  <div className='logo'>
+    <Link to='/home'>Homly</Link>
+  </div>
+);
 const Menu = () => (
   <nav className='menu'>
-    <Link to='/'>Home</Link>
-    <Link to='/catalog'>New Collections</Link>
-    <Link to='/catalog'>Decorations</Link>
+    <Link to='/home'>Home</Link>
+    <Link to='/furniture'>New Collections</Link>
+    <Link to='/furniture'>Decorations</Link>
     <Link to='/furniture'>Furniture</Link>
   </nav>
 );
