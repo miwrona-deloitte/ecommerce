@@ -10,8 +10,23 @@ const CatalogItem = (props: Props) => {
   const colors = getColors();
   const product = props.product;
   return (
-    <div>
-      <img src={'pictures/' + product.img} alt={product.img} width='350' height='350' />
+    <div className='catalog-item'>
+      <div className='picture-group'>
+        <div className='overlay'>
+          <div className='overlay-btn'>See product</div>
+          <div className='actions'>
+            <img src='pictures/heart-white.svg' alt='Heart Overlay' width='21' />
+            <img src='pictures/basket-white.svg' alt='Basket Overlay' width='21' />
+          </div>
+        </div>
+        <img
+          src={'pictures/' + product.img}
+          alt={product.img}
+          width='350'
+          height='350'
+          className='catalog-item-picture'
+        />
+      </div>
       <div className='details'>
         <div className='caption'>
           <div className='name'>{product.name}</div>

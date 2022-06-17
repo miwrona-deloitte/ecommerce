@@ -1,0 +1,79 @@
+.catalog-item {
+  .picture-group {
+    position: relative;
+    width: 50%;
+  }
+  .picture-group:hover {
+    cursor: pointer;
+    background-color: #2e2119;
+    opacity: 0.4;
+    .overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  .overlay {
+    visibility: hidden;
+    position: absolute;
+    top: calc(50% - 44px / 2);
+    left: calc((350px - 217px) / 2);
+    text-align: center;
+  }
+  .overlay-btn {
+    background-color: white;
+    color: #636363;
+    font-size: 16px;
+    line-height: 44px;
+    text-transform: uppercase;
+    width: 217px;
+    height: 44px;
+    text-align: center;
+  }
+  .actions {
+    justify-content: space-around;
+    margin-top: 20px;
+    img {
+      padding: 0 20px;
+    }
+  }
+}
+
+.details {
+  margin-top: 8px;
+  .caption {
+    display: flex;
+    justify-content: space-between;
+    line-height: 21px;
+    font-size: 14px;
+    .price {
+      font-weight: 600;
+    }
+    .name {
+    }
+  }
+}
+
+.color-variant {
+  display: flex;
+  margin-top: 7px;
+  .circle {
+    background-color: #4f311c;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin: 1px 0 0 1px;
+    position: relative;
+  }
+  .circle:hover {
+    cursor: pointer;
+  }
+  .surrounding {
+    border: solid 1px white;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  .active {
+    border: solid 1px #bfbfbf;
+  }
+}

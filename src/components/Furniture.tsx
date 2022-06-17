@@ -1,4 +1,4 @@
-import './Furniture.scss';
+import './CatalogItem.scss';
 import Filters from './Filters';
 import CatalogItem from './CatalogItem';
 import { getProducts } from '../dictionary/products';

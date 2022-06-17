@@ -6,44 +6,4 @@
   // grid-template-columns: repeat(3, minmax(350px, 1fr));
   grid-template-columns: repeat(4, 350px);
   grid-template-rows: 421px 421px 421px;
-
-  .details {
-    margin-top: 8px;
-    .caption {
-      display: flex;
-      justify-content: space-between;
-      line-height: 21px;
-      font-size: 14px;
-      .price {
-        font-weight: 600;
-      }
-      .name {
-      }
-    }
-  }
-
-  .color-variant {
-    display: flex;
-    margin-top: 7px;
-    .circle {
-      background-color: #4f311c;
-      border-radius: 50%;
-      width: 10px;
-      height: 10px;
-      margin: 1px 0 0 1px;
-      position: relative;
-    }
-    .circle:hover {
-      cursor: pointer;
-    }
-    .surrounding {
-      border: solid 1px white;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
-    .active {
-      border: solid 1px #bfbfbf;
-    }
-  }
 }
