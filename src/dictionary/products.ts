@@ -43,6 +43,48 @@ const products: Product[] = [
     img: 'nathan-oakley-OngbrOmqtzc-unsplash.png',
     color: 'brown',
   },
+  {
+    id: 6,
+    name: 'Eco wood table, 100 x 220 cm',
+    price: '1250',
+    img: 'nathan-oakley-OngbrOmqtzc-unsplash.png',
+    color: 'brown',
+  },
+  {
+    id: 7,
+    name: 'Eco wood table, 100 x 220 cm',
+    price: '1250',
+    img: 'nathan-oakley-OngbrOmqtzc-unsplash.png',
+    color: 'brown',
+  },
+  {
+    id: 8,
+    name: 'Eco wood table, 100 x 220 cm',
+    price: '1250',
+    img: 'nathan-oakley-OngbrOmqtzc-unsplash.png',
+    color: 'brown',
+  },
+  {
+    id: 9,
+    name: 'Eco wood table, 100 x 220 cm',
+    price: '1250',
+    img: 'nathan-oakley-OngbrOmqtzc-unsplash.png',
+    color: 'brown',
+  },
+  {
+    id: 10,
+    name: 'Eco wood table, 100 x 220 cm',
+    price: '1250',
+    img: 'nathan-oakley-OngbrOmqtzc-unsplash.png',
+    color: 'brown',
+  },
+  {
+    id: 11,
+    name: 'Eco wood table, 100 x 220 cm',
+    price: '1250',
+    img: 'nathan-oakley-OngbrOmqtzc-unsplash.png',
+    color: 'brown',
+  },
 ];
 
 export function getProducts() {
