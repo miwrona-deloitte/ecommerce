@@ -1,0 +1,57 @@
+.banner {
+  padding: 0 100px;
+  display: flex;
+  margin-bottom: 52px;
+  .card {
+    max-width: 20%;
+    text-align: left;
+    background-color: #fffbf8;
+    padding-left: 58px;
+    padding-top: 10px;
+    .banner-content {
+      width: 260px;
+      h1 {
+        font-size: 42px;
+        font-weight: 600;
+        line-height: 63px;
+        color: #361e0d;
+      }
+      p {
+        font-size: 14px;
+        line-height: 21px;
+      }
+      button {
+        width: 135px;
+        height: 48px;
+        left: 193px;
+        top: 341px;
+        color: white;
+        background: #361e0d;
+        border-color: #361e0d;
+        border-radius: 62px;
+      }
+    }
+    button:hover {
+      cursor: pointer;
+    }
+  }
+
+  .picture {
+    background: url('../../public/pictures/banner-bckgr.png');
+    background-position: right 35% top 10%;
+    background-repeat: no-repeat;
+    width: 70%;
+    height: 500px;
+  }
+}
+
+.bestsellers {
+  h2 {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 33px;
+    margin-left: 100px;
+    margin-top: 0;
+    margin-top: 0;
+  }
+}
