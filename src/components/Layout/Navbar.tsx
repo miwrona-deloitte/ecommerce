@@ -40,7 +40,7 @@ const Tools = () => {
           <span className='desc'>Liked</span>
         </li>
         <li>
-          {/* <span className='counter'>{counter}</span> */}
+          <span className='counter'>{counter}</span>
           <img
             onClick={() => {
               setShowMinicart(!showMinicart);
