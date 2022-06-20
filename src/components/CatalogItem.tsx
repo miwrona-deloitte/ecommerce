@@ -1,5 +1,7 @@
 import './Furniture.scss';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../store';
 import { Product } from '../model/Catalog/Furniture';
 import { getColors } from '../dictionary/colors';
 
@@ -9,6 +11,13 @@ const CatalogItem = (props: Props) => {
   const [active, setActive] = useState(1);
   const colors = getColors();
   const product = props.product;
+
+  const dispatch = useDispatch();
+  const addToCartHandler = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    dispatch(cartActions.addToCart({ product: product, qty: 1 }));
+  };
+
   return (
     <div className='catalog-item'>
       <div className='picture-group'>
@@ -17,7 +26,7 @@ const CatalogItem = (props: Props) => {
           <div className='overlay-btn'>See product</div>
           <div className='actions'>
             <img src='pictures/heart-white.svg' alt='Heart Overlay' width='21' />
-            <img src='pictures/basket-white.svg' alt='Basket Overlay' width='21' />
+            <img src='pictures/basket-white.svg' alt='Basket Overlay' width='21' onClick={addToCartHandler} />
           </div>
         </div>
         <img

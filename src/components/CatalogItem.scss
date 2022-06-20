@@ -4,7 +4,6 @@
     width: 50%;
   }
   .picture-group:hover {
-    cursor: pointer;
     .overlay {
       opacity: 1;
     }
@@ -35,12 +34,16 @@
     width: 217px;
     height: 44px;
     text-align: center;
+    cursor: pointer;
   }
   .actions {
     justify-content: space-around;
     margin-top: 20px;
     img {
       padding: 0 20px;
+    }
+    img:hover {
+      cursor: pointer;
     }
   }
 }
