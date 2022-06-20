@@ -39,7 +39,7 @@ const Tools = ({ showMinicart, setShowMinicart }: props) => {
           <span className='desc'>Liked</span>
         </li>
         <li>
-          <span className='counter'>{counter}</span>
+          {typeof counter === 'number' && counter > 0 && <span className='counter'>{counter}</span>}
           <img
             onClick={() => {
               setShowMinicart(!showMinicart);
