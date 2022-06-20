@@ -20,10 +20,9 @@ const Menu = () => (
     <NavLink to='/furniture'>Furniture</NavLink>
   </nav>
 );
-
-const Tools = () => {
+type props = { showMinicart: boolean; setShowMinicart: (showMinicart: boolean) => void };
+const Tools = ({ showMinicart, setShowMinicart }: props) => {
   const counter = useSelector((state: RootState) => state.cart.counter);
-  const [showMinicart, setShowMinicart] = useState(false);
   return (
     <div className='tools'>
       <ul>
@@ -64,7 +63,7 @@ const Navbar = () => {
           <Logo />
           <Menu />
         </div>
-        <Tools />
+        <Tools showMinicart={showMinicart} setShowMinicart={setShowMinicart} />
       </div>
       {showMinicart && <Minicart />}
     </>
