@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Navbar.scss';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -8,15 +8,16 @@ import './Navbar.scss';
 
 const Logo = () => (
   <div className='logo'>
-    <Link to='/home'>Homly</Link>
+    <NavLink to='/home'>Homly</NavLink>
   </div>
 );
 const Menu = () => (
   <nav className='menu'>
-    <Link to='/home'>Home</Link>
-    <Link to='/furniture'>New Collections</Link>
-    <Link to='/furniture'>Decorations</Link>
-    <Link to='/furniture'>Furniture</Link>
+    <NavLink to='/home'>Home</NavLink>
+    <NavLink to='about'>about</NavLink>
+    <NavLink to='/new-collections'>New Collections</NavLink>
+    <NavLink to='/decorations'>Decorations</NavLink>
+    <NavLink to='/furniture'>Furniture</NavLink>
   </nav>
 );
 
