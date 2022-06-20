@@ -1,13 +1,13 @@
-.catalog-item {
-  .picture-group {
+.catalogItem {
+  .pictureGroup {
     position: relative;
     width: 50%;
   }
-  .picture-group:hover {
+  .pictureGroup:hover {
     .overlay {
       opacity: 1;
     }
-    .overlay-container {
+    .overlayContainer {
       position: absolute;
       width: 350px;
       height: 350px;
@@ -15,7 +15,7 @@
       opacity: 0.4;
     }
   }
-  .overlay-container {
+  .overlayContainer {
     opacity: 0;
   }
   .overlay {
@@ -25,7 +25,7 @@
     text-align: center;
     opacity: 0;
   }
-  .overlay-btn {
+  .overlayBtn {
     background-color: white;
     color: #636363;
     font-size: 16px;
@@ -63,7 +63,7 @@
   }
 }
 
-.color-variant {
+.colorVariant {
   display: flex;
   margin-top: 7px;
   .circle {

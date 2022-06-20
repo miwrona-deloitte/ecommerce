@@ -1,9 +1,9 @@
-import './Furniture.scss';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../store';
 import { Product } from '../model/Catalog/Furniture';
 import { getColors } from '../dictionary/colors';
+import styles from './CatalogItem.module.scss';
 
 type Props = { product: Product };
 
@@ -19,12 +19,12 @@ const CatalogItem = (props: Props) => {
   };
 
   return (
-    <div className='catalog-item'>
-      <div className='picture-group'>
-        <div className='overlay-container'></div>
-        <div className='overlay'>
-          <div className='overlay-btn'>See product</div>
-          <div className='actions'>
+    <div className={styles.catalogItem}>
+      <div className={styles.pictureGroup}>
+        <div className={styles.overlayGontainer}></div>
+        <div className={styles.overlay}>
+          <div className={styles.overlayBtn}>See product</div>
+          <div className={styles.actions}>
             <img src='pictures/heart-white.svg' alt='Heart Overlay' width='21' />
             <img src='pictures/basket-white.svg' alt='Basket Overlay' width='21' onClick={addToCartHandler} />
           </div>
@@ -34,20 +34,20 @@ const CatalogItem = (props: Props) => {
           alt={product.img}
           width='350'
           height='350'
-          className='catalog-item-picture'
+          className={styles.catalogItemPicture}
         />
       </div>
-      <div className='details'>
-        <div className='caption'>
-          <div className='name'>{product.name}</div>
-          <div className='price'>{product.price + ' zł'}</div>
+      <div className={styles.details}>
+        <div className={styles.caption}>
+          <div className={styles.name}>{product.name}</div>
+          <div className={styles.price}>{product.price + ' zł'}</div>
         </div>
-        {/* <div className='color-variant'>{product.color}</div> */}
-        <div className='color-variant'>
+        {/* <div className={styles.colorVariant}>{product.color}</div> */}
+        <div className={styles.colorVariant}>
           {colors.map(color => (
             <div className={color.id === active ? 'surrounding active' : 'surrounding'} key={color.id}>
               <div
-                className='circle'
+                className={styles.circle}
                 style={{ backgroundColor: color.hex }}
                 onClick={() => {
                   setActive(color.id);

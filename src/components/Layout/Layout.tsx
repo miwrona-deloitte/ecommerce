@@ -1,12 +1,12 @@
 import React from 'react';
 import Navbar from './Navbar';
-import './Layout.scss';
+import styles from './Layout.module.scss';
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <div className='layout'>
+      <div className={styles.layout}>
         <Navbar />
-        <main className='content'>{children}</main>
+        <main className={styles.content}>{children}</main>
       </div>
     </>
   );

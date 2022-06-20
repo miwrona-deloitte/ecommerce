@@ -1,18 +1,17 @@
 import { NavLink } from 'react-router-dom';
-import './Navbar.scss';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import Minicart from '../Minicart';
-import './Navbar.scss';
+import styles from './Navbar.module.scss';
 
 const Logo = () => (
-  <div className='logo'>
+  <div className={styles.logo}>
     <NavLink to='/home'>Homly</NavLink>
   </div>
 );
 const Menu = () => (
-  <nav className='menu'>
+  <nav className={styles.menu}>
     <NavLink to='/home'>Home</NavLink>
     <NavLink to='about'>about</NavLink>
     <NavLink to='/new-collections'>New Collections</NavLink>
@@ -24,22 +23,22 @@ type props = { showMinicart: boolean; setShowMinicart: (showMinicart: boolean) =
 const Tools = ({ showMinicart, setShowMinicart }: props) => {
   const counter = useSelector((state: RootState) => state.cart.counter);
   return (
-    <div className='tools'>
+    <div className={styles.tools}>
       <ul>
         <li>
           <img src='/../../../pictures/search.svg' alt='search icon' />
-          <span className='desc'>Search</span>
+          <span className={styles.desc}>Search</span>
         </li>
         <li>
           <img src='/../../../pictures/profile.svg' alt='profile icon' />
-          <span className='desc'>Profile</span>
+          <span className={styles.desc}>Profile</span>
         </li>
         <li>
           <img src='/../../../pictures/heart.svg' alt='heart icon' />
-          <span className='desc'>Liked</span>
+          <span className={styles.desc}>Liked</span>
         </li>
         <li>
-          {typeof counter === 'number' && counter > 0 && <span className='counter'>{counter}</span>}
+          {typeof counter === 'number' && counter > 0 && <span className={styles.counter}>{counter}</span>}
           <img
             onClick={() => {
               setShowMinicart(!showMinicart);
@@ -47,7 +46,7 @@ const Tools = ({ showMinicart, setShowMinicart }: props) => {
             src='/../../../pictures/basket.svg'
             alt='cart icon'
           />
-          <span className='desc'>Basket</span>
+          <span className={styles.desc}>Basket</span>
         </li>
       </ul>
     </div>
@@ -58,8 +57,8 @@ const Navbar = () => {
   const [showMinicart, setShowMinicart] = useState(false);
   return (
     <>
-      <div className='navbar'>
-        <div className='leftWrapper'>
+      <div className={styles.navbar}>
+        <div className={styles.leftWrapper}>
           <Logo />
           <Menu />
         </div>
