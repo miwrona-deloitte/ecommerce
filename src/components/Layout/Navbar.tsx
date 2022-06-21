@@ -38,15 +38,15 @@ const Tools = ({ showMinicart, setShowMinicart }: props) => {
           <span className={styles.desc}>Liked</span>
         </li>
         <li>
-          {typeof counter === 'number' && counter > 0 && <span className={styles.counter}>{counter}</span>}
-          <img
+          <span
             onClick={() => {
               setShowMinicart(!showMinicart);
             }}
-            src='/../../../pictures/basket.svg'
-            alt='cart icon'
-          />
-          <span className={styles.desc}>Basket</span>
+          >
+            <img src='/../../../pictures/basket.svg' alt='cart icon' />
+            <span className={styles.desc}>Basket</span>
+            {typeof counter === 'number' && counter > 0 && <span className={styles.counter}>{counter}</span>}
+          </span>
         </li>
       </ul>
     </div>
@@ -64,7 +64,7 @@ const Navbar = () => {
         </div>
         <Tools showMinicart={showMinicart} setShowMinicart={setShowMinicart} />
       </div>
-      {showMinicart && <Minicart />}
+      {showMinicart && <Minicart setShowMinicart={setShowMinicart} />}
     </>
   );
 };

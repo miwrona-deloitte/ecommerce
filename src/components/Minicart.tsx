@@ -1,6 +1,8 @@
 import Cart from './Cart';
+import styles from './Minicart.module.scss';
 
-const Minicart: React.FC = () => {
+type props = { setShowMinicart: (showMinicart: boolean) => void };
+const Minicart = ({ setShowMinicart }: props) => {
   return (
     <div
       style={{
@@ -14,6 +16,9 @@ const Minicart: React.FC = () => {
         backgroundColor: 'white',
       }}
     >
+      <span className={styles.close} onClick={() => setShowMinicart(false)}>
+        x
+      </span>
       <Cart />
     </div>
   );
