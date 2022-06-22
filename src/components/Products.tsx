@@ -11,7 +11,7 @@ const Products = () => {
 
   let products;
   if (error) {
-    // log error.message
+    console.log(error);
     products = getProducts();
   } else {
     const productsContentful: CMSProduct[] = data.productCollection.items;

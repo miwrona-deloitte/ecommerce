@@ -9,6 +9,7 @@ type Props = { product: CMSProduct };
 
 const CatalogItem = (props: Props) => {
   const [active, setActive] = useState(1);
+  console.log(active);
   const colors = getColors();
   const product = props.product;
 
@@ -45,7 +46,10 @@ const CatalogItem = (props: Props) => {
         {/* <div className={styles.colorVariant}>{product.color}</div> */}
         <div className={styles.colorVariant}>
           {colors.map(color => (
-            <div className={color.id === active ? 'surrounding active' : 'surrounding'} key={color.id}>
+            <div
+              className={color.id === active ? `${styles.surrounding} ${styles.active}` : styles.surrounding}
+              key={color.id}
+            >
               <div
                 className={styles.circle}
                 style={{ backgroundColor: color.hex }}
