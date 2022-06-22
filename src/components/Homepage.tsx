@@ -3,7 +3,7 @@ import styles from './Homepage.module.scss';
 
 const Homepage = () => {
   return (
-    <>
+    <div className={styles.homepage}>
       <div className={styles.banner}>
         <div className={styles.card}>
           <div className={styles.bannerContent}>
@@ -18,7 +18,7 @@ const Homepage = () => {
         <h2>Bestsellers</h2>
         <Products />
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,7 +1,12 @@
+.homepage {
+  width: 88%;
+  margin: 0 auto;
+}
+
 .banner {
-  padding: 0 100px;
   display: flex;
   margin-bottom: 52px;
+  width: 1463px;
   .card {
     max-width: 20%;
     text-align: left;
@@ -40,14 +45,12 @@
     background: url('../../public/pictures/banner-bckgr.png');
     background-position: right 35% top 10%;
     background-repeat: no-repeat;
-    width: 70%;
+    width: 80%;
     height: 500px;
   }
 }
 
 .bestsellers {
-  width: 78%;
-  margin: 0 auto;
   h2 {
     font-size: 22px;
     font-weight: 400;
