@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const GET_PRODUCT_BY_ID = gql`
   query ($productId: String) {
@@ -68,7 +68,7 @@ export const CMS_HOME_PAGE = gql`
 
 export const GET_PRODUCT_BY_ENTRY_ID = gql`
   query ($entryId: String!) {
-    product(id: $entryId) {  
+    product(id: $entryId) {
       name
       ecommerceId
       price

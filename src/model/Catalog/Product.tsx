@@ -12,11 +12,10 @@ export interface CMSProduct {
     url: string;
     title: string;
   };
+  color?: string;
 }
 
-export const parseCmsProductToProduct = (
-  cmsProduct: CMSProduct | undefined
-): Product | null => {
+export const parseCmsProductToProduct = (cmsProduct: CMSProduct | undefined): Product | null => {
   if (cmsProduct === undefined) {
     return null;
   }

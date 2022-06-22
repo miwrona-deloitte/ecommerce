@@ -1,9 +1,12 @@
 export type Product = {
-  id: number;
+  ecommerceId: number;
   name: string;
   price: string;
-  img: string;
-  color: string;
+  picture: {
+    url: string;
+    title: string;
+  };
+  color?: string;
 };
 
 export type Color = {
