@@ -1,8 +1,10 @@
+import styles from './Filters.module.scss';
+
 const Filters = () => {
   return (
-    <div style={{ marginLeft: '100px' }}>
-      <img src='pictures/filtering.svg' alt='Filtering and sorting icon' width='15' style={{ paddingRight: '12px' }} />
-      <span style={{ fontSize: '8px', lineHeight: '12px' }}>Filtering and sorting</span>
+    <div className={styles.filters}>
+      <img src='pictures/filtering.svg' alt='Filtering and sorting icon' width='15' className={styles.icon} />
+      <span className={styles.text}>Filtering and sorting</span>
     </div>
   );
 };
