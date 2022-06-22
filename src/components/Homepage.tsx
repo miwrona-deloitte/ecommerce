@@ -1,10 +1,7 @@
-import CatalogItem from './CatalogItem';
-import { getProducts } from '../dictionary/products';
+import Products from './Products';
 import styles from './Homepage.module.scss';
-import furniture from './Furniture.module.scss';
 
 const Homepage = () => {
-  const products = getProducts();
   return (
     <>
       <div className={styles.banner}>
@@ -19,11 +16,7 @@ const Homepage = () => {
       </div>
       <div className={styles.bestsellers}>
         <h2>Bestsellers</h2>
-        <div className={furniture.container}>
-          {products.map(product => (
-            <CatalogItem product={product} key={product.id} />
-          ))}
-        </div>
+        <Products />
       </div>
     </>
   );

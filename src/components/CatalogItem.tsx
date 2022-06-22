@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../store';
-import { Product } from '../model/Catalog/Furniture';
+import { CMSProduct } from '../model/Catalog/Product';
 import { getColors } from '../dictionary/colors';
 import styles from './CatalogItem.module.scss';
 
-type Props = { product: Product };
+type Props = { product: CMSProduct };
 
 const CatalogItem = (props: Props) => {
   const [active, setActive] = useState(1);
@@ -30,8 +30,8 @@ const CatalogItem = (props: Props) => {
           </div>
         </div>
         <img
-          src={'pictures/' + product.img}
-          alt={product.img}
+          src={product.picture.url}
+          alt={product.picture.title}
           width='350'
           height='350'
           className={styles.catalogItemPicture}
