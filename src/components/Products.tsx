@@ -17,6 +17,7 @@ const Products = () => {
     const productsContentful: CMSProduct[] = data.productCollection.items;
     products = productsContentful;
   }
+  //  products = getProducts();
 
   return (
     <div className={furniture.container}>

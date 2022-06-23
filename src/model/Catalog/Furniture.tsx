@@ -9,6 +9,16 @@ export type Product = {
   color?: string;
 };
 
+export type Variant = {
+  ecommerceId: number;
+  variantId: number;
+  color: string;
+  picture: {
+    url: string;
+    title: string;
+  };
+};
+
 export type Color = {
   id: number;
   hex: string;
