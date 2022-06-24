@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const GET_PRODUCT_BY_ID = gql`
   query ($productId: String) {
-    productCollection(where: { ecommerce_id: $productId }) {
+    productCollection(where: { ecommerceId: $productId }) {
       items {
         name
         ecommerceId
