@@ -79,3 +79,19 @@ export const GET_PRODUCT_BY_ENTRY_ID = gql`
     }
   }
 `;
+
+export const GET_VARIANTS_BY_ID = gql`
+  query ($ecommerceId: Int) {
+    variantCollection(where: { ecommerceId: $ecommerceId }) {
+      items {
+        variantId
+        ecommerceId
+        color
+        picture {
+          url
+          title
+        }
+      }
+    }
+  }
+`;

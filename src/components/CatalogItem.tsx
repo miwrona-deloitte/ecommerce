@@ -4,11 +4,14 @@ import { cartActions } from '../store';
 import { CMSProduct } from '../model/Catalog/Product';
 import styles from './CatalogItem.module.scss';
 import { getVariantsByProductId, getVariantById, getFirstVariantForProduct } from '../service/VariantService';
+import { useApolloClient } from '@apollo/client';
+import { GET_VARIANTS_BY_ID } from '../graphql/query/product';
 
 type Props = { product: CMSProduct };
 
 const CatalogItem = (props: Props) => {
   const [active, setActive] = useState<number | null>(null);
+  const [variantsCntfl, setVariantsCntfl] = useState();
   const product = props.product;
 
   const dispatch = useDispatch();
@@ -17,11 +20,21 @@ const CatalogItem = (props: Props) => {
     dispatch(cartActions.addToCart({ product: product, qty: 1 }));
   };
 
-  const variants = getVariantsByProductId(product.ecommerceId);
+  const client = useApolloClient();
+  client
+    .query({
+      query: GET_VARIANTS_BY_ID,
+      variables: { ecommerceId: product.ecommerceId },
+    })
+    .then(result => setVariantsCntfl(result.data.variantCollection.items));
+
+  const variants =
+    typeof variantsCntfl === 'object' ? variantsCntfl : getVariantsByProductId(Number(product.ecommerceId));
   const firstVariant = getFirstVariantForProduct(product.ecommerceId);
   const variantOrProduct = firstVariant !== null ? firstVariant : product;
   const pictureUrl = active !== null ? getVariantById(active).picture.url : variantOrProduct?.picture.url;
   const currentVariantId = active !== null ? active : firstVariant?.variantId;
+
   return (
     <div className={styles.catalogItem}>
       <div className={styles.pictureGroup}>
@@ -47,7 +60,7 @@ const CatalogItem = (props: Props) => {
           <div className={styles.price}>{product.price + ' zł'}</div>
         </div>
         <div className={styles.colorVariant}>
-          {variants.map(variant => (
+          {variants?.map(variant => (
             <div
               className={
                 variant.variantId === currentVariantId ? `${styles.surrounding} ${styles.active}` : styles.surrounding
