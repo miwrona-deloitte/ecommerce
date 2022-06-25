@@ -13,6 +13,7 @@ export interface CMSProduct {
     title: string;
   };
   color?: string;
+  qty?: number;
 }
 
 export const parseCmsProductToProduct = (cmsProduct: CMSProduct | undefined): Product | null => {

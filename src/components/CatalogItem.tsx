@@ -12,12 +12,23 @@ type Props = { product: CMSProduct };
 const CatalogItem = (props: Props) => {
   const [active, setActive] = useState<number | null>(null);
   const [variantsCntfl, setVariantsCntfl] = useState();
+  console.log(props.product);
   const product = props.product;
+  let productParsed = {
+    ecommerceId: product.ecommerceId,
+    name: product.name,
+    price: product.price,
+    picture: {
+      url: product.picture.url,
+      title: product.picture.title,
+    },
+    qty: 1,
+  };
 
   const dispatch = useDispatch();
   const addToCartHandler = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
-    dispatch(cartActions.addToCart({ product: product, qty: 1 }));
+    dispatch(cartActions.addToCart({ product: productParsed, qty: 1 }));
   };
 
   const client = useApolloClient();
