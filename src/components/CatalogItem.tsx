@@ -4,15 +4,14 @@ import { cartActions } from '../store';
 import { CMSProduct } from '../model/Catalog/Product';
 import styles from './CatalogItem.module.scss';
 import { getVariantsByProductId, getVariantById, getFirstVariantForProduct } from '../service/VariantService';
-import { useApolloClient } from '@apollo/client';
-import { GET_VARIANTS_BY_ID } from '../graphql/query/product';
+import { getVariantsFromCntflByProductId } from '../service/VariantContentfulService';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
 
 type Props = { product: CMSProduct };
 
 const CatalogItem = (props: Props) => {
   const [active, setActive] = useState<number | null>(null);
-  const [variantsCntfl, setVariantsCntfl] = useState();
-  console.log(props.product);
   const product = props.product;
   let productParsed = {
     ecommerceId: product.ecommerceId,
@@ -31,16 +30,11 @@ const CatalogItem = (props: Props) => {
     dispatch(cartActions.addToCart({ product: productParsed, qty: 1 }));
   };
 
-  const client = useApolloClient();
-  client
-    .query({
-      query: GET_VARIANTS_BY_ID,
-      variables: { ecommerceId: product.ecommerceId },
-    })
-    .then(result => setVariantsCntfl(result.data.variantCollection.items));
-
+  const variantsCntfl = useSelector((state: RootState) => state.variants.items);
   const variants =
-    typeof variantsCntfl === 'object' ? variantsCntfl : getVariantsByProductId(Number(product.ecommerceId));
+    typeof variantsCntfl === 'object'
+      ? getVariantsFromCntflByProductId(variantsCntfl, Number(product.ecommerceId))
+      : getVariantsByProductId(Number(product.ecommerceId));
   const firstVariant = getFirstVariantForProduct(product.ecommerceId);
   const variantOrProduct = firstVariant !== null ? firstVariant : product;
   const pictureUrl = active !== null ? getVariantById(active).picture.url : variantOrProduct?.picture.url;

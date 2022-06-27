@@ -1,4 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { Variant } from '../model/Catalog/Furniture';
 import { Product } from '../model/Catalog/Product';
 import { Item } from './../model/Cart/Item';
 
@@ -74,8 +75,26 @@ const cartSlice = createSlice({
 
 const cartReducer = cartSlice.reducer;
 
+const initialVariants: { items: Variant[] } = {
+  items: [],
+};
+
+const variantsSlice = createSlice({
+  name: 'variants',
+  initialState: initialVariants,
+  reducers: {
+    updateVariants(state, action) {
+      console.log(action.payload);
+
+      state.items = action.payload.variants;
+    },
+  },
+});
+
+const variantsReducer = variantsSlice.reducer;
+
 const store = configureStore({
-  reducer: { cart: cartReducer },
+  reducer: { cart: cartReducer, variants: variantsReducer },
 });
 
 export default store;
@@ -85,6 +104,10 @@ export interface RootState {
     counter: number;
     total: number;
   };
+  variants: {
+    items: Variant[];
+  };
 }
 export const cartActions = cartSlice.actions;
+export const variantsActions = variantsSlice.actions;
 export type { Product, Item };

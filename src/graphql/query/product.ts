@@ -95,3 +95,19 @@ export const GET_VARIANTS_BY_ID = gql`
     }
   }
 `;
+
+export const GET_VARIANTS = gql`
+  query {
+    variantCollection(limit: 10) {
+      items {
+        variantId
+        ecommerceId
+        color
+        picture {
+          url
+          title
+        }
+      }
+    }
+  }
+`;
