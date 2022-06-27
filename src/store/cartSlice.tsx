@@ -19,7 +19,6 @@ const cartSlice = createSlice({
   reducers: {
     addToCart(state, action) {
       const payloadProduct = action.payload.product;
-      console.log(payloadProduct);
       const findIndex = helper.findInArrById(state.items, payloadProduct['id']);
       if (findIndex >= 0) {
         state.items[findIndex]['qty'] = state.items[findIndex]['qty'] + action.payload.qty;

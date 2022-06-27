@@ -10,8 +10,6 @@ const variantsSlice = createSlice({
   initialState: initialVariants,
   reducers: {
     updateVariants(state, action) {
-      console.log(action.payload);
-
       state.items = action.payload.variants;
     },
   },

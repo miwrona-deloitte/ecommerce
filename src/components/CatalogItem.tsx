@@ -7,6 +7,7 @@ import { getVariantsByProductId, getVariantById, getFirstVariantForProduct } fro
 import { getVariantsFromCntflByProductId } from '../service/VariantContentfulService';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
+import Variants from './Variants';
 
 type Props = { product: CMSProduct };
 
@@ -64,24 +65,7 @@ const CatalogItem = (props: Props) => {
           <div className={styles.name}>{product.name}</div>
           <div className={styles.price}>{product.price + ' zł'}</div>
         </div>
-        <div className={styles.colorVariant}>
-          {variants?.map(variant => (
-            <div
-              className={
-                variant.variantId === currentVariantId ? `${styles.surrounding} ${styles.active}` : styles.surrounding
-              }
-              key={variant.variantId}
-            >
-              <div
-                className={styles.circle}
-                style={{ backgroundColor: variant.color }}
-                onClick={() => {
-                  setActive(variant.variantId);
-                }}
-              />
-            </div>
-          ))}
-        </div>
+        <Variants variants={variants} currentVariantId={currentVariantId} setActive={setActive} />
       </div>
     </div>
   );
