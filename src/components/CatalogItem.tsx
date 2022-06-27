@@ -13,7 +13,7 @@ type Props = { product: CMSProduct };
 const CatalogItem = (props: Props) => {
   const [active, setActive] = useState<number | null>(null);
   const product = props.product;
-  let productParsed = {
+  const productParsed = {
     ecommerceId: product.ecommerceId,
     name: product.name,
     price: product.price,

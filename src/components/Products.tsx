@@ -16,6 +16,7 @@ const Products = () => {
       query: GET_VARIANTS,
     })
     .then(result => dispatch(variantsActions.updateVariants({ variants: result.data.variantCollection.items })));
+
   const { loading, error, data } = useQuery(GET_PRODUCTS);
 
   const dispatch = useDispatch();
