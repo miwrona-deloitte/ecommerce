@@ -1,0 +1,24 @@
+.colorVariant {
+  display: flex;
+  margin-top: 7px;
+  .circle {
+    background-color: #4f311c;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin: 1px 0 0 1px;
+    position: relative;
+  }
+  .circle:hover {
+    cursor: pointer;
+  }
+  .surrounding {
+    border: solid 1px white;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  .active {
+    border: solid 1px #bfbfbf;
+  }
+}

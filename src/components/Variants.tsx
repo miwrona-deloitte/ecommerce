@@ -1,4 +1,4 @@
-import styles from './CatalogItem.module.scss';
+import styles from './Variants.module.scss';
 import { Variant } from '../model/Catalog/Furniture';
 import { Dispatch, SetStateAction } from 'react';
 

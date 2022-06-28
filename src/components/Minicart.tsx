@@ -4,18 +4,7 @@ import styles from './Minicart.module.scss';
 type props = { setShowMinicart: (showMinicart: boolean) => void };
 const Minicart = ({ setShowMinicart }: props) => {
   return (
-    <div
-      style={{
-        position: 'absolute',
-        right: '105px',
-        top: '40px',
-        border: 'solid 1px grey',
-        borderRadius: '10px',
-        padding: '5px',
-        zIndex: '3',
-        backgroundColor: 'white',
-      }}
-    >
+    <div className={styles.minicart}>
       <span className={styles.close} onClick={() => setShowMinicart(false)}>
         x
       </span>

@@ -1,22 +1,19 @@
-import { useDispatch } from "react-redux";
-import { cartActions } from "../../store";
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../../store';
+import styles from './RemoveItem.module.scss';
 
-const RemoveItem: React.FC<{itemId: number}> = (props) => {
+const RemoveItem: React.FC<{ itemId: number }> = props => {
   const dispatch = useDispatch();
   const removeFromCart = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
-    dispatch(cartActions.removeFromCart({itemId: props.itemId}))
-  };
-
-  const removeSign : React.CSSProperties = {
-    cursor: "pointer"
+    dispatch(cartActions.removeFromCart({ itemId: props.itemId }));
   };
 
   return (
-    <span style={removeSign} onClick={removeFromCart}>
-      <img src="/../../../pictures/trash.ico" alt="trash icon"/>
+    <span onClick={removeFromCart} className={styles.removeSign}>
+      <img src='/../../../pictures/trash.ico' alt='trash icon' />
     </span>
   );
-}
+};
 
 export default RemoveItem;
