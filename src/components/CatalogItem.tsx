@@ -3,11 +3,11 @@ import { useDispatch } from 'react-redux';
 import { cartActions } from '../store';
 import { CMSProduct } from '../model/Catalog/Product';
 import styles from './CatalogItem.module.scss';
-import { getVariantsByProductId, getVariantById, getFirstVariantForProduct } from '../service/VariantService';
-import { getVariantsFromCntflByProductId } from '../service/VariantContentfulService';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 import Variants from './Variants';
+import VariantService from '../service/VariantService';
+import { getVariants } from '../dictionary/variants';
 
 type Props = { product: CMSProduct };
 
@@ -32,13 +32,13 @@ const CatalogItem = (props: Props) => {
   };
 
   const variantsCntfl = useSelector((state: RootState) => state.variants.items);
-  const variants =
-    typeof variantsCntfl === 'object'
-      ? getVariantsFromCntflByProductId(variantsCntfl, Number(product.ecommerceId))
-      : getVariantsByProductId(Number(product.ecommerceId));
-  const firstVariant = getFirstVariantForProduct(product.ecommerceId);
+  const variantService = new VariantService(variantsCntfl ?? getVariants());
+  const productId = Number(product.ecommerceId);
+  const variants = variantService.getVariantsByProductId(productId);
+  const firstVariant = variantService.getFirstVariantForProduct(productId);
   const variantOrProduct = firstVariant !== null ? firstVariant : product;
-  const pictureUrl = active !== null ? getVariantById(active).picture.url : variantOrProduct?.picture.url;
+  const pictureUrl =
+    active !== null ? variantService.getVariantById(active).picture.url : variantOrProduct?.picture.url;
   const currentVariantId = active !== null ? active : firstVariant?.variantId;
 
   return (
