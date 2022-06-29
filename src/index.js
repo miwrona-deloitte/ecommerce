@@ -26,7 +26,7 @@ root.render(
         <ApolloProvider client={client}>
           <Layout>
             <Routes>
-              <Route path='/' element={<App />} />
+              <Route path='/' element={<Homepage />} />
               <Route path='cart' element={<Cart />} />
               <Route path='catalog' element={<Catalog />} />
               <Route path='pdp' element={<ProductDetailsPage />}>
