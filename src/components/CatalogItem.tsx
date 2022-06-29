@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { cartActions } from '../store';
+import { cartActions, Item } from '../store';
 import { CMSProduct } from '../model/Catalog/Product';
 import styles from './CatalogItem.module.scss';
 import { useSelector } from 'react-redux';
@@ -14,14 +14,11 @@ type Props = { product: CMSProduct };
 const CatalogItem = (props: Props) => {
   const [active, setActive] = useState<number | null>(null);
   const product = props.product;
-  const productParsed = {
-    ecommerceId: product.ecommerceId,
+  const productParsed: Item = {
+    id: product.ecommerceId,
     name: product.name,
     price: product.price,
-    picture: {
-      url: product.picture.url,
-      title: product.picture.title,
-    },
+    url: product.picture.url,
     qty: 1,
   };
 
