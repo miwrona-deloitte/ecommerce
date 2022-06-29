@@ -1,6 +1,6 @@
 const variants = [
   {
-    ecommerceId: 6,
+    productId: 6,
     variantId: 1,
     color: '#4f311c',
     picture: {
@@ -9,7 +9,7 @@ const variants = [
     },
   },
   {
-    ecommerceId: 6,
+    productId: 6,
     variantId: 2,
     color: '#855736',
     picture: {
@@ -18,7 +18,7 @@ const variants = [
     },
   },
   {
-    ecommerceId: 6,
+    productId: 6,
     variantId: 3,
     color: '#E5D3C6',
     picture: {
@@ -27,7 +27,7 @@ const variants = [
     },
   },
   {
-    ecommerceId: 6,
+    productId: 6,
     variantId: 4,
     color: '#FFD8BB',
     picture: {
@@ -36,7 +36,7 @@ const variants = [
     },
   },
   {
-    ecommerceId: 1,
+    productId: 1,
     variantId: 5,
     color: '#855736',
     picture: {

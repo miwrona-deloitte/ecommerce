@@ -8,7 +8,7 @@ class VariantImpl {
   }
 
   public getVariantsByProductId(productId: number): Variant[] {
-    return this.variants.filter(variant => variant.ecommerceId === productId);
+    return this.variants.filter(variant => variant.productId === productId);
   }
 
   public getVariantById(variantId: number): Variant {
@@ -17,7 +17,7 @@ class VariantImpl {
   }
 
   public getFirstVariantForProduct(productId: number | null): Variant | null {
-    const variantsById = this.variants.filter(variant => variant.ecommerceId === productId);
+    const variantsById = this.variants.filter(variant => variant.productId === productId);
     if (variantsById.length > 0) {
       return variantsById[0];
     }

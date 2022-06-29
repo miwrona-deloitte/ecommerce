@@ -1,5 +1,5 @@
 export type Product = {
-  ecommerceId: number;
+  productId: number;
   name: string;
   price: string;
   picture: {
@@ -10,7 +10,7 @@ export type Product = {
 };
 
 export type Variant = {
-  ecommerceId: number;
+  productId: number;
   variantId: number;
   color: string;
   picture: {

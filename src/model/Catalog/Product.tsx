@@ -5,7 +5,7 @@ export interface Product {
   url: string;
 }
 export interface CMSProduct {
-  ecommerceId: number;
+  productId: number;
   name: string;
   price: string;
   picture: {
@@ -21,7 +21,7 @@ export const parseCmsProductToProduct = (cmsProduct: CMSProduct | undefined): Pr
     return null;
   }
   return {
-    id: cmsProduct.ecommerceId,
+    id: cmsProduct.productId,
     name: cmsProduct.name,
     price: cmsProduct.price,
     url: cmsProduct.picture.url,

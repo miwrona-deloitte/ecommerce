@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { GET_PRODUCTS } from "../graphql/query/product";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { GET_PRODUCTS } from '../graphql/query/product';
 
 const ProductList: React.FC = () => {
   const { loading, error, data } = useQuery(GET_PRODUCTS);
@@ -18,17 +18,13 @@ const ProductList: React.FC = () => {
       <h2>Products</h2>
       <ul>
         {productsContentful.map((product: any) => (
-          <li key={product.ecommerceId}>
+          <li key={product.productId}>
             <div>
-              <span>ID: {product.ecommerceId}</span>
-              <Link to={`/pdp/${product.ecommerceId}`}>
+              <span>ID: {product.productId}</span>
+              <Link to={`/pdp/${product.productId}`}>
                 <div>
                   <span>{product.name}</span>
-                  <img
-                    src={product.picture.url}
-                    width="100"
-                    alt={product.picture.name}
-                  />
+                  <img src={product.picture.url} width='100' alt={product.picture.name} />
                 </div>
               </Link>
               <span>{product.price} $</span>

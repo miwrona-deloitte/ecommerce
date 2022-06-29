@@ -2,10 +2,10 @@ import { gql } from '@apollo/client';
 
 export const GET_PRODUCT_BY_ID = gql`
   query ($productId: String) {
-    productCollection(where: { ecommerceId: $productId }) {
+    productCollection(where: { productId: $productId }) {
       items {
         name
-        ecommerceId
+        productId
         price
         picture {
           url
@@ -21,7 +21,7 @@ export const GET_PRODUCTS = gql`
     productCollection(limit: 10) {
       items {
         name
-        ecommerceId
+        productId
         price
         picture {
           url
@@ -70,7 +70,7 @@ export const GET_PRODUCT_BY_ENTRY_ID = gql`
   query ($entryId: String!) {
     product(id: $entryId) {
       name
-      ecommerceId
+      productId
       price
       picture {
         url
@@ -81,11 +81,11 @@ export const GET_PRODUCT_BY_ENTRY_ID = gql`
 `;
 
 export const GET_VARIANTS_BY_ID = gql`
-  query ($ecommerceId: Int) {
-    variantCollection(where: { ecommerceId: $ecommerceId }) {
+  query ($productId: Int) {
+    variantCollection(where: { productId: $productId }) {
       items {
         variantId
-        ecommerceId
+        productId
         color
         picture {
           url
@@ -101,7 +101,7 @@ export const GET_VARIANTS = gql`
     variantCollection(limit: 10) {
       items {
         variantId
-        ecommerceId
+        productId
         color
         picture {
           url

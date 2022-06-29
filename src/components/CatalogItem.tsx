@@ -14,8 +14,8 @@ type Props = { product: CMSProduct };
 const CatalogItem = (props: Props) => {
   const [active, setActive] = useState<number | null>(null);
   const product = props.product;
-  const productParsed: Item = {
-    id: product.ecommerceId,
+  const cartItem: Item = {
+    id: product.productId,
     name: product.name,
     price: product.price,
     url: product.picture.url,
@@ -25,12 +25,12 @@ const CatalogItem = (props: Props) => {
   const dispatch = useDispatch();
   const addToCartHandler = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
-    dispatch(cartActions.addToCart({ product: productParsed, qty: 1 }));
+    dispatch(cartActions.addToCart({ product: cartItem, qty: 1 }));
   };
 
   const variantsCntfl = useSelector((state: RootState) => state.variants.items);
   const variantService = new VariantService(variantsCntfl ?? getVariants());
-  const productId = Number(product.ecommerceId);
+  const productId = Number(product.productId);
   const variants = variantService.getVariantsByProductId(productId);
   const firstVariant = variantService.getFirstVariantForProduct(productId);
   const variantOrProduct = firstVariant !== null ? firstVariant : product;

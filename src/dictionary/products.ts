@@ -2,7 +2,7 @@ import { Product } from '../model/Catalog/Furniture';
 
 const products: Product[] = [
   {
-    ecommerceId: 1,
+    productId: 1,
     name: 'Eco wood table, 100 x 220 cm',
     price: '1250',
     picture: {
@@ -12,7 +12,7 @@ const products: Product[] = [
     color: 'brown',
   },
   {
-    ecommerceId: 2,
+    productId: 2,
     name: 'Eco wood table, 100 x 220 cm',
     price: '1250',
     picture: {
@@ -23,7 +23,7 @@ const products: Product[] = [
     color: 'brown',
   },
   {
-    ecommerceId: 3,
+    productId: 3,
     name: 'Eco wood table, 100 x 220 cm',
     price: '1250',
     picture: {
@@ -34,7 +34,7 @@ const products: Product[] = [
     color: 'brown',
   },
   {
-    ecommerceId: 4,
+    productId: 4,
     name: 'Eco wood table, 100 x 220 cm',
     price: '1250',
     picture: {
@@ -45,7 +45,7 @@ const products: Product[] = [
     color: 'brown',
   },
   {
-    ecommerceId: 5,
+    productId: 5,
     name: 'Eco wood table, 100 x 220 cm',
     price: '1250',
     picture: {
@@ -56,7 +56,7 @@ const products: Product[] = [
     color: 'brown',
   },
   {
-    ecommerceId: 6,
+    productId: 6,
     name: 'Eco wood table, 100 x 220 cm',
     price: '1250',
     picture: {
@@ -67,7 +67,7 @@ const products: Product[] = [
     color: 'brown',
   },
   {
-    ecommerceId: 7,
+    productId: 7,
     name: 'Eco wood table, 100 x 220 cm',
     price: '1250',
     picture: {
@@ -78,7 +78,7 @@ const products: Product[] = [
     color: 'brown',
   },
   {
-    ecommerceId: 8,
+    productId: 8,
     name: 'Eco wood table, 100 x 220 cm',
     price: '1250',
     picture: {
@@ -89,7 +89,7 @@ const products: Product[] = [
     color: 'brown',
   },
   {
-    ecommerceId: 9,
+    productId: 9,
     name: 'Eco wood table, 100 x 220 cm',
     price: '1250',
     picture: {
@@ -100,7 +100,7 @@ const products: Product[] = [
     color: 'brown',
   },
   {
-    ecommerceId: 10,
+    productId: 10,
     name: 'Eco wood table, 100 x 220 cm',
     price: '1250',
     picture: {
@@ -111,7 +111,7 @@ const products: Product[] = [
     color: 'brown',
   },
   {
-    ecommerceId: 11,
+    productId: 11,
     name: 'Eco wood table, 100 x 220 cm',
     price: '1250',
     picture: {
@@ -122,7 +122,7 @@ const products: Product[] = [
     color: 'brown',
   },
   {
-    ecommerceId: 12,
+    productId: 12,
     name: 'Eco wood table, 100 x 220 cm',
     price: '1250',
     picture: {
