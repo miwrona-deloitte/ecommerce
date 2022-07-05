@@ -44,8 +44,10 @@ const Tools = ({ showMinicart, setShowMinicart }: props) => {
             }}
           >
             <img src='/../../../pictures/basket.svg' alt='cart icon' />
-            <span className={styles.desc}>Basket</span>
-            {typeof counter === 'number' && counter > 0 && <span className={styles.counter}>{counter}</span>}
+            <span className={styles.desc}>
+              Basket
+              {typeof counter === 'number' && counter > 0 && ' (' + counter + ')'}
+            </span>
           </span>
         </li>
       </ul>
