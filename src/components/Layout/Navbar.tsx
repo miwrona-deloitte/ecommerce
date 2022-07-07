@@ -17,6 +17,7 @@ const Menu = () => (
     <NavLink to='/new-collections'>New Collections</NavLink>
     <NavLink to='/decorations'>Decorations</NavLink>
     <NavLink to='/furniture'>Furniture</NavLink>
+    <NavLink to='/cart'>Cart</NavLink>
   </nav>
 );
 type props = { showMinicart: boolean; setShowMinicart: (showMinicart: boolean) => void };

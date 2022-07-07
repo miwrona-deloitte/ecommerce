@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Cart from './components/Cart';
+import CartPage from './pages/CartPage';
 import Catalog from './pages/Catalog';
 import Furniture from './components/Furniture';
 import Homepage from './components/Homepage';
@@ -27,7 +26,7 @@ root.render(
           <Layout>
             <Routes>
               <Route path='/' element={<Homepage />} />
-              <Route path='cart' element={<Cart />} />
+              <Route path='cart' element={<CartPage />} />
               <Route path='catalog' element={<Catalog />} />
               <Route path='pdp' element={<ProductDetailsPage />}>
                 <Route path=':productId' />

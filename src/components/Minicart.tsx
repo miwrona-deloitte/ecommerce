@@ -1,5 +1,6 @@
 import Cart from './Cart';
 import styles from './Minicart.module.scss';
+import { MinicartWrapper } from './Cart/styles';
 
 type props = { setShowMinicart: (showMinicart: boolean) => void };
 const Minicart = ({ setShowMinicart }: props) => {
@@ -8,7 +9,9 @@ const Minicart = ({ setShowMinicart }: props) => {
       <span className={styles.close} onClick={() => setShowMinicart(false)}>
         x
       </span>
-      <Cart />
+      <MinicartWrapper>
+        <Cart />
+      </MinicartWrapper>
     </div>
   );
 };
