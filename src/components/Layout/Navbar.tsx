@@ -1,9 +1,11 @@
 import { NavLink } from 'react-router-dom';
-import { useState, useRef, MutableRefObject, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import Minicart from '../Minicart';
 import styles from './Navbar.module.scss';
+import useHideMinicart from '../../hooks/useHideMinicart';
+import { ReactNode } from 'react';
 
 const Logo = () => (
   <div className={styles.logo}>
@@ -68,41 +70,22 @@ const Navbar = () => {
         <Tools showMinicart={showMinicart} setShowMinicart={setShowMinicart} />
       </div>
       {showMinicart && (
-        <HideMinicrtWrapper setShowMinicart={setShowMinicart}>
+        <HideMinicartWrapper setShowMinicart={setShowMinicart}>
           <Minicart />
-        </HideMinicrtWrapper>
+        </HideMinicartWrapper>
       )}
     </>
   );
 };
 
-const useHideMinicart = (
-  ref: MutableRefObject<HTMLDivElement | null>,
-  setShowMinicart: (showMinicart: boolean) => void,
-) => {
-  useEffect(() => {
-    const hideMinicart = (event: any) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        setShowMinicart(false);
-      }
-    };
-
-    document.addEventListener('mousedown', hideMinicart);
-
-    return () => {
-      document.removeEventListener('mousedown', hideMinicart);
-    };
-  }, [ref, setShowMinicart]);
+type minicartWrapperProps = {
+  setShowMinicart: (showMinicart: boolean) => void;
+  children: ReactNode;
 };
-
-const HideMinicrtWrapper = (props: any) => {
+const HideMinicartWrapper = (props: minicartWrapperProps) => {
   const wrapperRef = useRef(null);
   useHideMinicart(wrapperRef, props.setShowMinicart);
-  return (
-    <div className='any' ref={wrapperRef}>
-      {props.children}
-    </div>
-  );
+  return <div ref={wrapperRef}>{props.children}</div>;
 };
 
 export default Navbar;
