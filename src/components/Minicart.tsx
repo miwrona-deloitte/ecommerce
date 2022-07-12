@@ -10,7 +10,7 @@ const Minicart = ({ setShowMinicart }: props) => {
         x
       </span>
       <MinicartWrapper>
-        <Cart />
+        <Cart minicart={true} />
       </MinicartWrapper>
     </div>
   );

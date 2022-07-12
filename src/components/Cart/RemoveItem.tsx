@@ -11,7 +11,7 @@ const RemoveItem: React.FC<{ itemId: number }> = props => {
 
   return (
     <span onClick={removeFromCart} className={styles.removeSign}>
-      <img src='/../../../pictures/trash.ico' alt='trash icon' />
+      <img src='/../../../pictures/Union.svg' alt='cross icon' />
     </span>
   );
 };

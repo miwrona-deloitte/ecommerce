@@ -4,7 +4,7 @@ import { CartPageWrapper } from '../components/Cart/styles';
 const CartPage = () => {
   return (
     <CartPageWrapper>
-      <Cart />
+      <Cart minicart={false} />
     </CartPageWrapper>
   );
 };

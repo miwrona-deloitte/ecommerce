@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const MinicartWrapper = styled.div`
-  background-color: red;
+  margin: 24px 32px;
 `;
 const CartPageWrapper = styled.div`
   text-align: center;
