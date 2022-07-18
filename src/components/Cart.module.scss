@@ -59,6 +59,19 @@
         color: #000000;
       }
 
+      .colorGroup {
+        .colorValue {
+          .circle {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-left: 7px;
+            // background-color: rgb(133, 87, 54);
+          }
+        }
+      }
+
       .label {
         font-weight: 400;
         font-size: 12px;
