@@ -13,6 +13,7 @@ type Props = { product: CMSProduct };
 
 const CatalogItem = (props: Props) => {
   const [active, setActive] = useState<number | null>(null);
+  const [cartItemColor, setCartItemColor] = useState<string>('#4F311C');
   const product = props.product;
   const cartItem: Item = {
     id: product.productId,
@@ -20,6 +21,7 @@ const CatalogItem = (props: Props) => {
     price: product.price,
     url: product.picture.url,
     qty: 1,
+    color: cartItemColor,
   };
 
   const dispatch = useDispatch();
@@ -62,7 +64,12 @@ const CatalogItem = (props: Props) => {
           <div className={styles.name}>{product.name}</div>
           <div className={styles.price}>{product.price + ' zł'}</div>
         </div>
-        <Variants variants={variants} currentVariantId={currentVariantId} setActive={setActive} />
+        <Variants
+          variants={variants}
+          currentVariantId={currentVariantId}
+          setActive={setActive}
+          setCartItemColor={setCartItemColor}
+        />
       </div>
     </div>
   );

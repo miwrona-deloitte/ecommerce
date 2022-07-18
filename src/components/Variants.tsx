@@ -6,9 +6,10 @@ interface IProps {
   variants: Variant[];
   currentVariantId: number | undefined;
   setActive: Dispatch<SetStateAction<number | null>>;
+  setCartItemColor: Dispatch<SetStateAction<string>>;
 }
 
-const Variants = ({ variants, currentVariantId, setActive }: IProps): React.ReactElement => {
+const Variants = ({ variants, currentVariantId, setActive, setCartItemColor }: IProps): React.ReactElement => {
   return (
     <div className={styles.colorVariant}>
       {variants?.map(variant => (
@@ -23,6 +24,7 @@ const Variants = ({ variants, currentVariantId, setActive }: IProps): React.Reac
             style={{ backgroundColor: variant.color }}
             onClick={() => {
               setActive(variant.variantId);
+              setCartItemColor(variant.color);
             }}
           />
         </div>

@@ -32,7 +32,7 @@ const Cart: React.FC<{ minicart: boolean }> = props => {
                   <span className={styles.label}>Color</span>
                   <div className={styles.colorValue}>
                     <span>Dark brown</span>
-                    <span className={styles.circle} style={{ backgroundColor: 'rgb(133, 87, 54)' }}></span>
+                    <span className={styles.circle} style={{ backgroundColor: item.color }}></span>
                   </div>
                 </div>
                 <div className={styles.priceGroup}>

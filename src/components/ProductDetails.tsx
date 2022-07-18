@@ -1,11 +1,11 @@
-import { useDispatch } from "react-redux";
-import { cartActions, Product } from "../store";
-import React from "react";
-import { useQuery } from "@apollo/client";
-import { GET_PRODUCT_BY_ID } from "../graphql/query/product";
-import { CMSProduct, parseCmsProductToProduct } from "../model/Catalog/Product";
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../store';
+import React from 'react';
+import { useQuery } from '@apollo/client';
+import { GET_PRODUCT_BY_ID } from '../graphql/query/product';
+import { CMSProduct, parseCmsProductToProduct } from '../model/Catalog/Product';
 
-const ProductDetails: React.FC<{ productId: string | undefined }> = (props) => {
+const ProductDetails: React.FC<{ productId: string | undefined }> = props => {
   const dispatch = useDispatch();
   const { loading, error, data } = useQuery(GET_PRODUCT_BY_ID, {
     variables: { productId: props.productId },
@@ -20,9 +20,9 @@ const ProductDetails: React.FC<{ productId: string | undefined }> = (props) => {
     return <span>`No products found.`</span>;
   }
   const product = parseCmsProductToProduct(cmsProduct);
-  let imgUrl = "/../../pictures/default.jpeg";
-  let productName = "";
-  if (product !== null && typeof product === "object") {
+  let imgUrl = '/../../pictures/default.jpeg';
+  let productName = '';
+  if (product !== null && typeof product === 'object') {
     imgUrl = product.url;
     productName = product.name;
   }
@@ -35,7 +35,7 @@ const ProductDetails: React.FC<{ productId: string | undefined }> = (props) => {
   return (
     <div>
       <span>{productName}</span>
-      <img src={imgUrl} width="400" alt={imgUrl} />
+      <img src={imgUrl} width='400' alt={imgUrl} />
       <button onClick={addToCartHandler}>Add To Cart</button>
     </div>
   );
