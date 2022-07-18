@@ -1,11 +1,16 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 0 100px;
+  padding: 0 4%;
   font-family: 'Poppins', sans-serif;
+  position: fixed;
+  z-index: 1;
+  background-color: #fff;
+  padding-top: 30px;
+  width: 92%;
   .leftWrapper {
     display: flex;
-    line-height: 33px;
+    line-height: 36px;
     .logo {
       font-size: 24px;
       text-transform: uppercase;
