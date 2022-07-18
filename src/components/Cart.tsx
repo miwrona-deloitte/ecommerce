@@ -36,7 +36,7 @@ const Cart: React.FC<{ minicart: boolean }> = props => {
                   <span className={styles.label}>Price</span>
                   <span>{item.price} zł</span>
                 </div>
-                {/* <QtyBlock item={item} /> */}
+                <QtyBlock item={item} />
               </div>
             </div>
           </li>

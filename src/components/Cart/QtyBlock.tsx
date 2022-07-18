@@ -1,7 +1,8 @@
-import { useDispatch } from "react-redux";
-import { Item, cartActions } from "../../store/index";
+import { useDispatch } from 'react-redux';
+import { Item, cartActions } from '../../store/index';
+import styles from './QtyBlock.module.scss';
 
-const QtyBlock: React.FC<{ item: Item }> = (props) => {
+const QtyBlock: React.FC<{ item: Item }> = props => {
   const dispatch = useDispatch();
 
   const increaseQty = () => {
@@ -12,10 +13,17 @@ const QtyBlock: React.FC<{ item: Item }> = (props) => {
   };
 
   return (
-    <div>
-      <span> QTY: {props.item.qty}</span>
-      <button onClick={increaseQty}>+</button>
-      <button onClick={decreaseQty}>-</button>
+    <div className={styles.qtyBlock}>
+      <span className={styles.label}>Amount</span>
+      <div className={styles.qtyGroup}>
+        <span onClick={increaseQty} className={styles.plus}>
+          +
+        </span>
+        <span>{props.item.qty}</span>
+        <span onClick={decreaseQty} className={styles.minus}>
+          -
+        </span>
+      </div>
     </div>
   );
 };

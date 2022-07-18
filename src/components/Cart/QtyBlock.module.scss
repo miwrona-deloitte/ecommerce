@@ -1,0 +1,29 @@
+.qtyBlock {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  color: #000000;
+  display: grid;
+  grid-template-columns: 60px 100px;
+  margin-top: 8px;
+
+  .label {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .qtyGroup {
+    .minus,
+    .plus:hover {
+      cursor: pointer;
+    }
+    .plus {
+      padding-right: 8px;
+    }
+    .minus {
+      padding-left: 8px;
+    }
+  }
+}
