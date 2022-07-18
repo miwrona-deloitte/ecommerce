@@ -8,10 +8,10 @@ import { NavLink } from 'react-router-dom';
 const Cart: React.FC<{ minicart: boolean }> = props => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const cartTotal = useSelector((state: RootState) => state.cart.total);
-
+  const counter = useSelector((state: RootState) => state.cart.counter);
   return (
     <div className={props.minicart ? styles.minicart : styles.cart}>
-      <h1 className={styles.header}>Basket (2)</h1>
+      <h1 className={styles.header}>Basket ({counter})</h1>
       <ul>
         {cartItems.map(item => (
           <li key={item.id}>
