@@ -11,6 +11,10 @@ const helper = {
   findInArrById: (arr: { id: number }[], id: number) => {
     return arr.findIndex(item => item.id === id);
   },
+  formatPrice: (price: string): number => {
+    price = price.replace(',', '.');
+    return Number(price.replaceAll(/\s/g, ''));
+  },
 };
 
 const cartSlice = createSlice({
@@ -23,8 +27,7 @@ const cartSlice = createSlice({
       if (findIndex >= 0) {
         state.items[findIndex]['qty'] = state.items[findIndex]['qty'] + action.payload.qty;
         state.counter++;
-        const updatedTotal =
-          state.total + Number(state.items[findIndex].price.replaceAll(/\s/g, '')) * action.payload.qty;
+        const updatedTotal = state.total + helper.formatPrice(state.items[findIndex].price) * action.payload.qty;
         state.total = updatedTotal;
       } else {
         const item = payloadProduct;
@@ -35,7 +38,7 @@ const cartSlice = createSlice({
         return {
           items: updatedItems,
           counter: state.counter + 1,
-          total: state.total + Number(payloadProduct.price.replaceAll(/\s/g, '')),
+          total: state.total + helper.formatPrice(payloadProduct.price),
         };
       }
     },
@@ -43,7 +46,7 @@ const cartSlice = createSlice({
       const findIndex = helper.findInArrById(state.items, action.payload.itemId);
       const itemQty = state.items[findIndex]['qty'];
       state.counter = state.counter - itemQty;
-      state.total = state.total - Number(state.items[findIndex].price.replaceAll(/\s/g, '')) * itemQty;
+      state.total = state.total - helper.formatPrice(state.items[findIndex].price) * itemQty;
       state.items.splice(findIndex, 1);
     },
     increaseQty(state, action) {
@@ -51,14 +54,12 @@ const cartSlice = createSlice({
       const findIndex = helper.findInArrById(state.items, payloadProduct['id']);
       state.items[findIndex]['qty'] = state.items[findIndex]['qty'] + action.payload.qty;
       state.counter++;
-      const updatedTotal =
-        state.total + Number(state.items[findIndex].price.replaceAll(/\s/g, '')) * action.payload.qty;
+      const updatedTotal = state.total + helper.formatPrice(state.items[findIndex].price) * action.payload.qty;
       state.total = updatedTotal;
     },
     decreaseQty(state, action) {
       const findIndex = helper.findInArrById(state.items, action.payload.product['id']);
-      let updatedTotal = state.total ?? 0;
-      updatedTotal = state.total - Number(state.items[findIndex].price.replaceAll(/\s/g, '')) * action.payload.qty;
+      const updatedTotal = state.total - helper.formatPrice(state.items[findIndex].price) * action.payload.qty;
       if (state.items[findIndex]['qty'] > 1) {
         state.items[findIndex]['qty']--;
       } else {
