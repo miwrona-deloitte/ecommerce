@@ -9,7 +9,7 @@ const Cart: React.FC<{ minicart: boolean }> = props => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const cartTotal = useSelector((state: RootState) => state.cart.total);
   const counter = useSelector((state: RootState) => state.cart.counter);
-  return (
+  const cart = (
     <div className={props.minicart ? styles.minicart : styles.cart}>
       <h1 className={styles.header}>Basket ({counter})</h1>
       <ul>
@@ -56,6 +56,14 @@ const Cart: React.FC<{ minicart: boolean }> = props => {
       )}
     </div>
   );
+
+  const emptyState = (
+    <div>
+      <p>Basket is empty</p>
+    </div>
+  );
+
+  return counter !== 0 ? cart : emptyState;
 };
 
 export default Cart;
