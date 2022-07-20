@@ -9,6 +9,11 @@ const Cart: React.FC<{ minicart: boolean }> = props => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const cartTotal = useSelector((state: RootState) => state.cart.total);
   const counter = useSelector((state: RootState) => state.cart.counter);
+
+  const formatTotalPrice = (price: number): string => {
+    return Number(price.toFixed(2)).toString().replace('.', ',');
+  };
+
   const cart = (
     <div className={props.minicart ? styles.minicart : styles.cart}>
       <h1 className={styles.header}>Basket ({counter})</h1>
@@ -47,7 +52,7 @@ const Cart: React.FC<{ minicart: boolean }> = props => {
       </ul>
       <div className={styles.summaryGroup}>
         <span>Summary</span>
-        <span>{cartTotal.toFixed(2)} zł</span>
+        <span>{formatTotalPrice(cartTotal)} zł</span>
       </div>
       {props.minicart && (
         <NavLink to='/cart'>
