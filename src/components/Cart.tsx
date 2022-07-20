@@ -42,7 +42,7 @@ const Cart: React.FC<{ minicart: boolean }> = props => {
                 </div>
                 <div className={styles.priceGroup}>
                   <span className={styles.label}>Price</span>
-                  <span>{item.price} zł</span>
+                  <span>{item.price.replace('.', ',')} zł</span>
                 </div>
                 <QtyBlock item={item} />
               </div>
