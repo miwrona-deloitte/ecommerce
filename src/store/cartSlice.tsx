@@ -57,14 +57,14 @@ const cartSlice = createSlice({
     },
     decreaseQty(state, action) {
       const findIndex = helper.findInArrById(state.items, action.payload.product['id']);
+      let updatedTotal = state.total ?? 0;
+      updatedTotal = state.total - Number(state.items[findIndex].price.replaceAll(/\s/g, '')) * action.payload.qty;
       if (state.items[findIndex]['qty'] > 1) {
         state.items[findIndex]['qty']--;
       } else {
         state.items.splice(findIndex, 1);
       }
       state.counter--;
-      const updatedTotal =
-        state.total - Number(state.items[findIndex].price.replaceAll(/\s/g, '')) * action.payload.qty;
       state.total = updatedTotal;
     },
   },

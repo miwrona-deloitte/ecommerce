@@ -9,7 +9,7 @@ const QtyBlock: React.FC<{ item: Item }> = props => {
     dispatch(cartActions.increaseQty({ product: props.item, qty: 1 }));
   };
   const decreaseQty = () => {
-    dispatch(cartActions.decreaseQty({ product: props.item }));
+    dispatch(cartActions.decreaseQty({ product: props.item, qty: 1 }));
   };
 
   return (
