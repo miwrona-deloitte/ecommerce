@@ -6,6 +6,7 @@ import Minicart from '../Minicart';
 import styles from './Navbar.module.scss';
 import useHideMinicart from '../../hooks/useHideMinicart';
 import { ReactNode } from 'react';
+import { Categories } from '../Categories';
 
 const Logo = () => (
   <div className={styles.logo}>
@@ -66,6 +67,7 @@ const Navbar = () => {
         <div className={styles.leftWrapper}>
           <Logo />
           <Menu />
+          <Categories heading='Furniture' />
         </div>
         <Tools showMinicart={showMinicart} setShowMinicart={setShowMinicart} />
       </div>
