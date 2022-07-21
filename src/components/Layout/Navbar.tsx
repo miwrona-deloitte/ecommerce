@@ -23,6 +23,7 @@ const Menu = () => (
     <NavLink to='/cart'>Cart</NavLink>
   </nav>
 );
+
 type props = { showMinicart: boolean; setShowMinicart: (showMinicart: boolean) => void };
 const Tools = ({ showMinicart, setShowMinicart }: props) => {
   const counter = useSelector((state: RootState) => state.cart.counter);
@@ -61,13 +62,23 @@ const Tools = ({ showMinicart, setShowMinicart }: props) => {
 
 const Navbar = () => {
   const [showMinicart, setShowMinicart] = useState(false);
+  const [showCategories, setShowCategories] = useState(false);
+
   return (
     <>
       <div className={styles.navbar}>
-        <div className={styles.leftWrapper}>
+        <div
+          className={styles.leftWrapper}
+          onMouseEnter={() => {
+            setShowCategories(true);
+          }}
+          onMouseLeave={() => {
+            setShowCategories(false);
+          }}
+        >
           <Logo />
           <Menu />
-          <Categories heading='Furniture' />
+          {showCategories && <Categories heading='Furniture' />}
         </div>
         <Tools showMinicart={showMinicart} setShowMinicart={setShowMinicart} />
       </div>
