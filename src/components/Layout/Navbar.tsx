@@ -7,6 +7,7 @@ import styles from './Navbar.module.scss';
 import useHideMinicart from '../../hooks/useHideMinicart';
 import { ReactNode } from 'react';
 import { Categories } from '../Categories';
+import { MutableRefObject } from 'react';
 
 const Logo = () => (
   <div className={styles.logo}>
@@ -66,9 +67,11 @@ const Navbar = () => {
   const [showMinicart, setShowMinicart] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
   const showMinicartRedux = useSelector((state: RootState) => state.minicart.visible);
+  const toolsRef = useRef(null);
+
   return (
     <>
-      <div className={styles.navbar}>
+      <div className={styles.navbar} ref={toolsRef}>
         <div
           className={styles.leftWrapper}
           onMouseEnter={() => {
@@ -85,7 +88,7 @@ const Navbar = () => {
         <Tools showMinicart={showMinicart} setShowMinicart={setShowMinicart} />
       </div>
       {showMinicartRedux && (
-        <HideMinicartWrapper setShowMinicart={setShowMinicart}>
+        <HideMinicartWrapper setShowMinicart={setShowMinicart} toolsRef={toolsRef}>
           <Minicart />
         </HideMinicartWrapper>
       )}
@@ -95,6 +98,7 @@ const Navbar = () => {
 
 type minicartWrapperProps = {
   setShowMinicart: (showMinicart: boolean) => void;
+  toolsRef: MutableRefObject<Node | null>;
   children: ReactNode;
 };
 const HideMinicartWrapper = (props: minicartWrapperProps) => {
@@ -103,7 +107,7 @@ const HideMinicartWrapper = (props: minicartWrapperProps) => {
     dispatch(minicartActions.showMinicart({ visible: flag }));
   };
   const wrapperRef = useRef(null);
-  useHideMinicart(wrapperRef, toggleMinicart);
+  useHideMinicart(wrapperRef, toggleMinicart, props.toolsRef);
   return <div ref={wrapperRef}>{props.children}</div>;
 };
 
