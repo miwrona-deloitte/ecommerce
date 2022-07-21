@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useState, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, minicartActions } from '../../store';
 import Minicart from '../Minicart';
 import styles from './Navbar.module.scss';
 import useHideMinicart from '../../hooks/useHideMinicart';
@@ -27,6 +27,7 @@ const Menu = () => (
 type props = { showMinicart: boolean; setShowMinicart: (showMinicart: boolean) => void };
 const Tools = ({ showMinicart, setShowMinicart }: props) => {
   const counter = useSelector((state: RootState) => state.cart.counter);
+  const dispatch = useDispatch();
   return (
     <div className={styles.tools}>
       <ul>
@@ -45,6 +46,7 @@ const Tools = ({ showMinicart, setShowMinicart }: props) => {
         <li
           onClick={() => {
             setShowMinicart(!showMinicart);
+            dispatch(minicartActions.showMinicart({ visible: !showMinicart }));
           }}
         >
           <span>
@@ -63,7 +65,7 @@ const Tools = ({ showMinicart, setShowMinicart }: props) => {
 const Navbar = () => {
   const [showMinicart, setShowMinicart] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
-
+  const showMinicartRedux = useSelector((state: RootState) => state.minicart.visible);
   return (
     <>
       <div className={styles.navbar}>
@@ -82,7 +84,7 @@ const Navbar = () => {
         </div>
         <Tools showMinicart={showMinicart} setShowMinicart={setShowMinicart} />
       </div>
-      {showMinicart && (
+      {showMinicartRedux && (
         <HideMinicartWrapper setShowMinicart={setShowMinicart}>
           <Minicart />
         </HideMinicartWrapper>
@@ -96,8 +98,12 @@ type minicartWrapperProps = {
   children: ReactNode;
 };
 const HideMinicartWrapper = (props: minicartWrapperProps) => {
+  const dispatch = useDispatch();
+  const toggleMinicart = (flag: boolean) => {
+    dispatch(minicartActions.showMinicart({ visible: flag }));
+  };
   const wrapperRef = useRef(null);
-  useHideMinicart(wrapperRef, props.setShowMinicart);
+  useHideMinicart(wrapperRef, toggleMinicart);
   return <div ref={wrapperRef}>{props.children}</div>;
 };
 

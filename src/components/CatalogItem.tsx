@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { cartActions, Item } from '../store';
+import { cartActions, minicartActions, Item } from '../store';
 import { CMSProduct } from '../model/Catalog/Product';
 import styles from './CatalogItem.module.scss';
 import { useSelector } from 'react-redux';
@@ -28,6 +28,7 @@ const CatalogItem = (props: Props) => {
   const addToCartHandler = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     dispatch(cartActions.addToCart({ product: cartItem, qty: 1 }));
+    dispatch(minicartActions.showMinicart({ visible: true }));
   };
 
   const variantsCntfl = useSelector((state: RootState) => state.variants.items);
