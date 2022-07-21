@@ -52,13 +52,14 @@
       list-style: none;
       padding: 0;
       margin: 0;
-      width: 193px;
+      width: 248px;
       li {
         text-align: center;
+        width: 62px;
         .desc {
           font-size: 10px;
           display: flex;
-          flex-direction: row-reverse;
+          flex-direction: column;
         }
       }
     }
