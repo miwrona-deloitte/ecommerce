@@ -115,3 +115,20 @@ export const GET_VARIANTS = gql`
     }
   }
 `;
+
+export const GET_PRODUCT_BY_CATEGORY_ID = gql`
+  query ($categoryId: Int) {
+    productCollection(where: { categoryId: $categoryId }) {
+      items {
+        name
+        productId
+        categoryId
+        price
+        picture {
+          url
+          title
+        }
+      }
+    }
+  }
+`;

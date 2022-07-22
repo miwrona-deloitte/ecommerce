@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CartPage from './pages/CartPage';
 import Catalog from './pages/Catalog';
 import Furniture from './components/Furniture';
+import Decorations from './components/Decorations';
 import Homepage from './components/Homepage';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import { Provider } from 'react-redux';
@@ -32,6 +33,7 @@ root.render(
                 <Route path=':productId' />
               </Route>
               <Route path='furniture' element={<Furniture />} />
+              <Route path='decorations' element={<Decorations />} />
               <Route path='home' element={<Homepage />} />
             </Routes>
           </Layout>
