@@ -15,17 +15,30 @@ const Logo = () => (
     <NavLink to='/home'>Homly</NavLink>
   </div>
 );
-const Menu = () => (
-  <nav className={styles.menu}>
-    <NavLink to='/home'>Home</NavLink>
-    <NavLink to='about'>about</NavLink>
-    <NavLink to='/new-collections'>New Collections</NavLink>
-    <NavLink to='/decorations'>Decorations</NavLink>
-    <NavLink to='/furniture'>Furniture</NavLink>
-    <NavLink to='/cart'>Basket</NavLink>
-  </nav>
-);
-
+const Menu = () => {
+  return (
+    <nav className={styles.menu}>
+      <NavLink className={({ isActive }) => (isActive ? 'underline' : undefined)} to='/home'>
+        Home
+      </NavLink>
+      <NavLink className={({ isActive }) => (isActive ? 'underline' : undefined)} to='about'>
+        about
+      </NavLink>
+      <NavLink className={({ isActive }) => (isActive ? 'underline' : undefined)} to='/new-collections'>
+        New Collections
+      </NavLink>
+      <NavLink className={({ isActive }) => (isActive ? 'underline' : undefined)} to='/decorations'>
+        Decorations
+      </NavLink>
+      <NavLink className={({ isActive }) => (isActive ? 'underline' : undefined)} to='/furniture'>
+        Furniture
+      </NavLink>
+      <NavLink className={({ isActive }) => (isActive ? 'underline' : undefined)} to='/cart'>
+        Basket
+      </NavLink>
+    </nav>
+  );
+};
 type props = { showMinicart: boolean; setShowMinicart: (showMinicart: boolean) => void };
 const Tools = ({ showMinicart, setShowMinicart }: props) => {
   const counter = useSelector((state: RootState) => state.cart.counter);
