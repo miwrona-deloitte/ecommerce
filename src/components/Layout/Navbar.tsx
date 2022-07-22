@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState, minicartActions } from '../../store';
 import Minicart from '../Minicart';
 import styles from './Navbar.module.scss';
+import './Navbar.scss';
 import useHideMinicart from '../../hooks/useHideMinicart';
 import { ReactNode } from 'react';
 import { Categories } from '../Categories';
