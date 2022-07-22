@@ -27,6 +27,10 @@ export const GET_PRODUCTS = gql`
           url
           title
         }
+        thumb {
+          url
+          title
+        }
       }
     }
   }

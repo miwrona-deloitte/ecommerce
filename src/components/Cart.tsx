@@ -22,7 +22,7 @@ const Cart: React.FC<{ minicart: boolean }> = props => {
           <li key={item.id}>
             <div className={styles.item}>
               <div className={styles.imageGroup}>
-                <img src={item.url} width={props.minicart ? 163 : 200} alt={item.name + ' picture'} />
+                <img src={item.url} width={props.minicart ? 135 : 200} alt={item.name + ' picture'} />
               </div>
               <div className={styles.itemDetails}>
                 <div className={styles.firstLine}>

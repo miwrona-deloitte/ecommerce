@@ -19,7 +19,7 @@ const CatalogItem = (props: Props) => {
     id: product.productId,
     name: product.name,
     price: product.price,
-    url: product.picture.url,
+    url: product.thumb?.url ?? product.picture.url,
     qty: 1,
     color: cartItemColor,
   };

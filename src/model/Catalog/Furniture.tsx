@@ -7,6 +7,10 @@ export type Product = {
     title: string;
   };
   color?: string;
+  thumb?: {
+    url: string;
+    title: string;
+  };
 };
 
 export type Variant = {

@@ -12,6 +12,10 @@ export interface CMSProduct {
     url: string;
     title: string;
   };
+  thumb?: {
+    url: string;
+    title: string;
+  };
   color?: string;
   qty?: number;
 }
