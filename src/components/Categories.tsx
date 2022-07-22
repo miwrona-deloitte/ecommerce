@@ -1,10 +1,22 @@
 import styles from './Categories.module.scss';
+import { useState } from 'react';
+import { useApolloClient } from '@apollo/client';
+import { GET_CATEGORIES } from '../graphql/query/category';
 
 declare type categoriesProps = {
   heading: string;
 };
 
 export const Categories = (props: categoriesProps) => {
+  const [categories, setCategories] = useState([]);
+
+  const client = useApolloClient();
+  client
+    .query({
+      query: GET_CATEGORIES,
+    })
+    .then(result => setCategories(result.data.categoryCollection.items));
+
   return (
     <div className={styles.categories}>
       <span className={styles.header}>{props.heading}</span>
