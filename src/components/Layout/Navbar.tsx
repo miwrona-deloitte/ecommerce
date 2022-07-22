@@ -15,27 +15,49 @@ const Logo = () => (
     <NavLink to='/home'>Homly</NavLink>
   </div>
 );
+
+type MenuItemType = { title: string; url: string };
+const MenuItem = ({ title, url }: MenuItemType) => {
+  return (
+    <NavLink className={({ isActive }) => (isActive ? 'underline' : undefined)} to={url}>
+      {title}
+    </NavLink>
+  );
+};
+
 const Menu = () => {
+  const items: MenuItemType[] = [
+    {
+      title: 'Home',
+      url: '/home',
+    },
+    {
+      title: 'About',
+      url: '/about',
+    },
+    {
+      title: 'New Collections',
+      url: '/new-collections',
+    },
+    {
+      title: 'Decorations',
+      url: '/decorations',
+    },
+    {
+      title: 'Furniture',
+      url: '/furniture',
+    },
+    {
+      title: 'Cart',
+      url: '/cart',
+    },
+  ];
+
   return (
     <nav className={styles.menu}>
-      <NavLink className={({ isActive }) => (isActive ? 'underline' : undefined)} to='/home'>
-        Home
-      </NavLink>
-      <NavLink className={({ isActive }) => (isActive ? 'underline' : undefined)} to='about'>
-        about
-      </NavLink>
-      <NavLink className={({ isActive }) => (isActive ? 'underline' : undefined)} to='/new-collections'>
-        New Collections
-      </NavLink>
-      <NavLink className={({ isActive }) => (isActive ? 'underline' : undefined)} to='/decorations'>
-        Decorations
-      </NavLink>
-      <NavLink className={({ isActive }) => (isActive ? 'underline' : undefined)} to='/furniture'>
-        Furniture
-      </NavLink>
-      <NavLink className={({ isActive }) => (isActive ? 'underline' : undefined)} to='/cart'>
-        Basket
-      </NavLink>
+      {items.map(function (item, idx) {
+        return <MenuItem title={item.title} url={item.url} key={idx} />;
+      })}
     </nav>
   );
 };
