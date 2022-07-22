@@ -21,7 +21,7 @@ const Menu = () => (
     <NavLink to='/new-collections'>New Collections</NavLink>
     <NavLink to='/decorations'>Decorations</NavLink>
     <NavLink to='/furniture'>Furniture</NavLink>
-    <NavLink to='/cart'>Cart</NavLink>
+    <NavLink to='/cart'>Basket</NavLink>
   </nav>
 );
 
