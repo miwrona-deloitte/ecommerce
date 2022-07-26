@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useState, useRef } from 'react';
+import { useState, useRef, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, minicartActions } from '../../store';
 import Minicart from '../Minicart';
@@ -9,17 +9,30 @@ import useHideMinicart from '../../hooks/useHideMinicart';
 import { ReactNode } from 'react';
 import { Categories } from '../Categories';
 import { MutableRefObject } from 'react';
+import React from 'react';
 
 const Logo = () => (
   <div className={styles.logo}>
     <NavLink to='/home'>Homly</NavLink>
   </div>
 );
+export const NavbarContext = React.createContext({ setShowCategories: (showCategory: showCategoryState) => {} });
 
 type MenuItemType = { title: string; url: string };
 const MenuItem = ({ title, url }: MenuItemType) => {
+  const context = useContext(NavbarContext);
   return (
-    <NavLink className={({ isActive }) => (isActive ? 'underline' : undefined)} to={url}>
+    <NavLink
+      onMouseEnter={() => {
+        // change catgery from title to id when categories are retrieved from cms
+        context.setShowCategories({ show: true, category: title });
+      }}
+      onMouseLeave={() => {
+        context.setShowCategories({ show: false, category: null });
+      }}
+      className={({ isActive }) => (isActive ? 'underline' : undefined)}
+      to={url}
+    >
       {title}
     </NavLink>
   );
@@ -99,30 +112,27 @@ const Tools = ({ showMinicart, setShowMinicart }: props) => {
   );
 };
 
+type showCategoryState = {
+  show: boolean;
+  category: string | null;
+};
 const Navbar = () => {
   const [showMinicart, setShowMinicart] = useState(false);
-  const [showCategories, setShowCategories] = useState(false);
+  const [showCategories, setShowCategories] = useState<showCategoryState>({ show: false, category: null });
   const showMinicartRedux = useSelector((state: RootState) => state.minicart.visible);
   const toolsRef = useRef(null);
-
   return (
     <>
-      <div className={styles.navbar} ref={toolsRef}>
-        <div
-          className={styles.leftWrapper}
-          onMouseEnter={() => {
-            setShowCategories(true);
-          }}
-          onMouseLeave={() => {
-            setShowCategories(false);
-          }}
-        >
-          <Logo />
-          <Menu />
-          {showCategories && <Categories heading='Furniture' />}
+      <NavbarContext.Provider value={{ setShowCategories: setShowCategories }}>
+        <div className={styles.navbar} ref={toolsRef}>
+          <div className={styles.leftWrapper}>
+            <Logo />
+            <Menu />
+            {showCategories.show && <Categories heading={showCategories.category} />}
+          </div>
+          <Tools showMinicart={showMinicart} setShowMinicart={setShowMinicart} />
         </div>
-        <Tools showMinicart={showMinicart} setShowMinicart={setShowMinicart} />
-      </div>
+      </NavbarContext.Provider>
       {showMinicartRedux && (
         <HideMinicartWrapper setShowMinicart={setShowMinicart} toolsRef={toolsRef}>
           <Minicart />

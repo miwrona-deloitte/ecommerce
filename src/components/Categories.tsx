@@ -4,7 +4,7 @@ import { useApolloClient } from '@apollo/client';
 import { GET_CATEGORIES } from '../graphql/query/category';
 
 declare type categoriesProps = {
-  heading: string;
+  heading: string | null;
 };
 
 export const Categories = (props: categoriesProps) => {
