@@ -1,21 +1,20 @@
 import styles from './Categories.module.scss';
-import { useState } from 'react';
-import { useApolloClient } from '@apollo/client';
-import { GET_CATEGORIES } from '../graphql/query/category';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
+import CategoryService from '../service/CategoryService';
 
 declare type categoriesProps = {
   heading: string | null;
 };
 
 export const Categories = (props: categoriesProps) => {
-  const [categories, setCategories] = useState([]);
+  const categoriesCMS = useSelector((state: RootState) => state.categories.items);
 
-  const client = useApolloClient();
-  client
-    .query({
-      query: GET_CATEGORIES,
-    })
-    .then(result => setCategories(result.data.categoryCollection.items));
+  if (typeof categoriesCMS !== 'object') {
+    <div className={styles.categories}>No categories</div>;
+  }
+
+  const categoryService = new CategoryService(categoriesCMS);
 
   return (
     <div className={styles.categories}>
