@@ -10,6 +10,7 @@ import { ReactNode } from 'react';
 import { Categories } from '../Categories';
 import { MutableRefObject } from 'react';
 import React from 'react';
+import CategoryService from '../../service/CategoryService';
 
 const Logo = () => (
   <div className={styles.logo}>
@@ -39,6 +40,10 @@ const MenuItem = ({ title, url }: MenuItemType) => {
 };
 
 const Menu = () => {
+  const categoriesCMS = useSelector((state: RootState) => state.categories.items);
+  const categoryService = new CategoryService(categoriesCMS);
+  const mains = categoryService.getMainCategories();
+
   const items: MenuItemType[] = [
     {
       title: 'Home',
@@ -53,14 +58,6 @@ const Menu = () => {
       url: '/new-collections',
     },
     {
-      title: 'Decorations',
-      url: '/decorations',
-    },
-    {
-      title: 'Furniture',
-      url: '/furniture',
-    },
-    {
       title: 'Cart',
       url: '/cart',
     },
@@ -68,7 +65,7 @@ const Menu = () => {
 
   return (
     <nav className={styles.menu}>
-      {items.map(function (item, idx) {
+      {items.concat(mains).map(function (item, idx) {
         return <MenuItem title={item.title} url={item.url} key={idx} />;
       })}
     </nav>

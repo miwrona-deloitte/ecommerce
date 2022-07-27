@@ -3,4 +3,5 @@ export interface Category {
   id: number;
   path: string;
   hasParent: boolean;
+  link?: string;
 }
