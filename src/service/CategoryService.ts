@@ -1,4 +1,6 @@
 import { Category } from '../model/Catalog/Category';
+import { MenuItemType } from '../components/Layout/Navbar';
+
 class CategoryService {
   private categories;
 
@@ -14,8 +16,8 @@ class CategoryService {
     const categories = this.categories.filter(category => {
       return !category.hasParent;
     });
-    const parsedCategories: any[] = [];
-    categories.map(category => parsedCategories.push({ title: category.name, url: category.link, cms: true }));
+    const parsedCategories: MenuItemType[] = [];
+    categories.map(category => parsedCategories.push({ title: category.name, url: category.link ?? '/', cms: true }));
     return parsedCategories;
   }
 

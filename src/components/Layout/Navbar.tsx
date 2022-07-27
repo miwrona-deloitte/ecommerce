@@ -19,7 +19,7 @@ const Logo = () => (
 );
 export const NavbarContext = React.createContext({ setShowCategories: (showCategory: showCategoryState) => {} });
 
-type MenuItemType = { title: string; url: string };
+export type MenuItemType = { title: string; url: string; cms?: boolean };
 const MenuItem = ({ title, url }: MenuItemType) => {
   const context = useContext(NavbarContext);
   return (
