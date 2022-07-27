@@ -4,7 +4,7 @@ import { RootState } from '../store';
 import CategoryService from '../service/CategoryService';
 
 declare type categoriesProps = {
-  heading: string | null;
+  categoryId?: number | null;
 };
 
 export const Categories = (props: categoriesProps) => {
@@ -15,10 +15,13 @@ export const Categories = (props: categoriesProps) => {
   }
 
   const categoryService = new CategoryService(categoriesCMS);
+  if (typeof props.categoryId === 'number') {
+    console.log(categoryService.getCurrent(props.categoryId.toString()));
+  }
 
   return (
     <div className={styles.categories}>
-      <span className={styles.header}>{props.heading}</span>
+      <span className={styles.header}>{props.categoryId}</span>
       <div className={styles.flyoutMenu}>
         <div className={styles.col}>
           <h4 className={styles.flyoutMenuTitle}>Living Room</h4>

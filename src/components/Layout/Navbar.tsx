@@ -19,14 +19,13 @@ const Logo = () => (
 );
 export const NavbarContext = React.createContext({ setShowCategories: (showCategory: showCategoryState) => {} });
 
-export type MenuItemType = { title: string; url: string; cms?: boolean };
-const MenuItem = ({ title, url }: MenuItemType) => {
+export type MenuItemType = { id?: number | null; title: string; url: string; cms?: boolean };
+const MenuItem = ({ id, title, url }: MenuItemType) => {
   const context = useContext(NavbarContext);
   return (
     <NavLink
       onMouseEnter={() => {
-        // change catgery from title to id when categories are retrieved from cms
-        context.setShowCategories({ show: true, category: title });
+        context.setShowCategories({ show: true, category: id });
       }}
       onMouseLeave={() => {
         context.setShowCategories({ show: false, category: null });
@@ -66,7 +65,7 @@ const Menu = () => {
   return (
     <nav className={styles.menu}>
       {items.concat(mains).map(function (item, idx) {
-        return <MenuItem title={item.title} url={item.url} key={idx} />;
+        return <MenuItem id={item.id} title={item.title} url={item.url} key={idx} />;
       })}
     </nav>
   );
@@ -111,7 +110,7 @@ const Tools = ({ showMinicart, setShowMinicart }: props) => {
 
 type showCategoryState = {
   show: boolean;
-  category: string | null;
+  category?: number | null;
 };
 const Navbar = () => {
   const [showMinicart, setShowMinicart] = useState(false);
@@ -125,7 +124,7 @@ const Navbar = () => {
           <div className={styles.leftWrapper}>
             <Logo />
             <Menu />
-            {showCategories.show && <Categories heading={showCategories.category} />}
+            {showCategories.show && <Categories categoryId={showCategories.category} />}
           </div>
           <Tools showMinicart={showMinicart} setShowMinicart={setShowMinicart} />
         </div>

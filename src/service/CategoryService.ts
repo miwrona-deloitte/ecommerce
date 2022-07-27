@@ -17,7 +17,9 @@ class CategoryService {
       return !category.hasParent;
     });
     const parsedCategories: MenuItemType[] = [];
-    categories.map(category => parsedCategories.push({ title: category.name, url: category.link ?? '/', cms: true }));
+    categories.map(category =>
+      parsedCategories.push({ id: category.id, title: category.name, url: category.link ?? '/', cms: true }),
+    );
     return parsedCategories;
   }
 
