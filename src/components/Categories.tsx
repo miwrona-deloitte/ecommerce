@@ -16,7 +16,8 @@ export const Categories = (props: categoriesProps) => {
 
   const categoryService = new CategoryService(categoriesCMS);
   if (typeof props.categoryId === 'number') {
-    console.log(categoryService.getCurrent(props.categoryId.toString()));
+    // console.log(categoryService.getCurrent(props.categoryId.toString()));
+    console.log(categoryService.getCurrentOrdered(props.categoryId.toString()));
   }
 
   return (

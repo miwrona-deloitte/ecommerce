@@ -29,6 +29,63 @@ class CategoryService {
       return pathArr.includes(id);
     });
   }
+
+  // returns
+  //  [
+  //   {
+  //     minor: { name: 'Minor name 1' },
+  //     leaf: [
+  //       {
+  //         name: 'Leaf Name1',
+  //       },
+  //       {
+  //         name: 'Leaf Name2',
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     minor: { name: 'Minor name 2' },
+  //     leaf: [
+  //       {
+  //         name: 'Leaf Name3',
+  //       },
+  //       {
+  //         name: 'Leaf Name4',
+  //       },
+  //     ],
+  //   },
+  // ];
+  public getCurrentOrdered(id: string) {
+    const main = this.categories
+      .filter(category => {
+        return !category.hasParent;
+      })
+      .filter(category => {
+        let pathArr = category.path.split('/');
+        return pathArr.includes(id);
+      });
+
+    const minors = this.categories.filter(category => {
+      return category.path.split('/').length === 2;
+    });
+    const minorAndLeafs: { minor: Category; leafs: Category[] }[] = [];
+    minors.map(minor => {
+      let leafsByMinorId = this.categories.filter(category => {
+        let pathArr = category.path.split('/');
+        return pathArr.includes(minor.id.toString());
+      });
+
+      minorAndLeafs.push({
+        minor: minor,
+        leafs: leafsByMinorId.filter(leaf => leaf.path.split('/').length === 3),
+      });
+    });
+
+    return {
+      main: main,
+      minor: minorAndLeafs,
+    };
+  }
 }
 
 export default CategoryService;
