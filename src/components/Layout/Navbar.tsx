@@ -27,9 +27,6 @@ const MenuItem = ({ id, title, url }: MenuItemType) => {
       onMouseEnter={() => {
         context.setShowCategories({ show: true, category: id });
       }}
-      onMouseLeave={() => {
-        context.setShowCategories({ show: false, category: null });
-      }}
       className={({ isActive }) => (isActive ? 'underline' : undefined)}
       to={url}
     >
@@ -121,7 +118,12 @@ const Navbar = () => {
     <>
       <NavbarContext.Provider value={{ setShowCategories: setShowCategories }}>
         <div className={styles.navbar} ref={toolsRef}>
-          <div className={styles.leftWrapper}>
+          <div
+            className={styles.leftWrapper}
+            onMouseLeave={() => {
+              setShowCategories({ show: false, category: null });
+            }}
+          >
             <Logo />
             <Menu />
             <Categories showCategories={showCategories} />
