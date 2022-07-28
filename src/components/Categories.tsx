@@ -17,7 +17,25 @@ export const Categories = (props: categoriesProps) => {
   const categoryService = new CategoryService(categoriesCMS);
   if (typeof props.categoryId === 'number') {
     // console.log(categoryService.getCurrent(props.categoryId.toString()));
-    console.log(categoryService.getCurrentOrdered(props.categoryId.toString()));
+    const categories = categoryService.getCurrentOrdered(props.categoryId.toString());
+    console.log(categories);
+    return (
+      <div className={styles.categories}>
+        <span className={styles.header}>{categories.main.name}</span>
+        <div className={styles.flyoutMenu}>
+          {categories.minor.map(category => (
+            <div className={styles.col}>
+              <h4 className={styles.flyoutMenuTitle}>{category.minor.name}</h4>
+              <ul>
+                {category.leafs.map(leaf => (
+                  <li className={styles.flyoutMenuItem}>{leaf.name}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
   }
 
   return (
