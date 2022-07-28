@@ -108,7 +108,7 @@ const Tools = ({ showMinicart, setShowMinicart }: props) => {
   );
 };
 
-type showCategoryState = {
+export type showCategoryState = {
   show: boolean;
   category?: number | null;
 };
@@ -124,7 +124,7 @@ const Navbar = () => {
           <div className={styles.leftWrapper}>
             <Logo />
             <Menu />
-            {showCategories.show && <Categories categoryId={showCategories.category} />}
+            <Categories showCategories={showCategories} />
           </div>
           <Tools showMinicart={showMinicart} setShowMinicart={setShowMinicart} />
         </div>
