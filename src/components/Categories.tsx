@@ -18,11 +18,13 @@ export const Categories = (props: { showCategories: showCategoryState }) => {
         <span className={styles.header}>{categories.main.name}</span>
         <div className={styles.flyoutMenu}>
           {categories.minor.map(category => (
-            <div className={styles.col}>
+            <div className={styles.col} key={category.minor.id}>
               <h4 className={styles.flyoutMenuTitle}>{category.minor.name}</h4>
               <ul>
                 {category.leafs.map(leaf => (
-                  <li className={styles.flyoutMenuItem}>{leaf.name}</li>
+                  <li className={styles.flyoutMenuItem} key={leaf.id}>
+                    {leaf.name}
+                  </li>
                 ))}
               </ul>
             </div>
