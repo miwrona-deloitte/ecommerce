@@ -5,6 +5,7 @@ import Furniture from '../components/Furniture';
 const CategoryPage = () => {
   const params = useParams<{ categoryId: string }>();
   if (typeof params.categoryId !== 'string') {
+    // redirect 404
     return <Furniture />;
   }
   return (

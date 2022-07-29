@@ -30,6 +30,18 @@ class CategoryService {
     });
   }
 
+  public getLeafsIdsByMinorId(minorId: number): number[] {
+    const leafs = this.categories
+      .filter(category => category.path.split('/').includes(minorId.toString()))
+      .filter(leaf => leaf.path.split('/').length === 3);
+    return leafs.map(leaf => leaf.id);
+  }
+
+  public isMinor(categoryId: number): boolean {
+    const minorsIds = this.categories.filter(category => category.path.split('/').length === 2).map(minor => minor.id);
+    return minorsIds.indexOf(categoryId) >= 0;
+  }
+
   // returns;
   // [
   //   main: 'Decorations',

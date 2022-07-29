@@ -20,7 +20,9 @@ export const Categories = (props: { showCategories: showCategoryState }) => {
         <div className={styles.flyoutMenu}>
           {categories.minor.map(category => (
             <div className={styles.col} key={category.minor.id}>
-              <h4 className={styles.flyoutMenuTitle}>{category.minor.name}</h4>
+              <h4 className={styles.flyoutMenuTitle}>
+                <NavLink to={`/category/${category.minor.id}`}>{category.minor.name}</NavLink>
+              </h4>
               <ul>
                 {category.leafs.map(leaf => (
                   <li className={styles.flyoutMenuItem} key={leaf.id}>
