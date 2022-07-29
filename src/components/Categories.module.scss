@@ -69,6 +69,10 @@
         text-transform: uppercase;
         color: #000000;
         padding-bottom: 6px;
+        & > a {
+          text-decoration: none;
+          color: #000000;
+        }
       }
 
       .flyoutMenuTitle:hover,

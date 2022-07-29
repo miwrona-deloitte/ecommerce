@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Layout from './components/Layout/Layout';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import CategoryPage from './pages/CategoryPage';
 
 const client = new ApolloClient({
   uri: 'https://graphql.contentful.com/content/v1/spaces/dzz5eytt1nwx/environments/master?access_token=7ww_8pRJFo1aJaxEkmW30hAPyPII3SecDUhwuaIHPZM',
@@ -34,6 +35,9 @@ root.render(
               </Route>
               <Route path='furniture' element={<Furniture />} />
               <Route path='decorations' element={<Decorations />} />
+              <Route path='category' element={<CategoryPage />}>
+                <Route path=':categoryId' />
+              </Route>
               <Route path='home' element={<Homepage />} />
             </Routes>
           </Layout>

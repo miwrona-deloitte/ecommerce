@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 import CategoryService from '../service/CategoryService';
 import { showCategoryState } from './Layout/Navbar';
+import { NavLink } from 'react-router-dom';
 
 export const Categories = (props: { showCategories: showCategoryState }) => {
   const categoriesCMS = useSelector((state: RootState) => state.categories.items);
@@ -23,7 +24,7 @@ export const Categories = (props: { showCategories: showCategoryState }) => {
               <ul>
                 {category.leafs.map(leaf => (
                   <li className={styles.flyoutMenuItem} key={leaf.id}>
-                    {leaf.name}
+                    <NavLink to={`/category/${leaf.id}`}>{leaf.name}</NavLink>
                   </li>
                 ))}
               </ul>
