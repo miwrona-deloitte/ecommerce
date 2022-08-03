@@ -9,7 +9,7 @@ import { RootState } from '../store';
 
 const ProductsByCategory = (props: { categoryId?: number }) => {
   let products: CMSProduct[] = [];
-  const categories = useSelector((state: RootState) => state.categories.items);
+  const categories = useSelector((state: RootState) => state.categories.items.all);
   const categoryService = new CategoryService(categories);
   const { loading, error, data } = useQuery(GET_PRODUCT_BY_CATEGORY_ID, {
     variables: { categoryId: props.categoryId },

@@ -10,7 +10,6 @@ import { ReactNode } from 'react';
 import { Categories } from '../Categories';
 import { MutableRefObject } from 'react';
 import React from 'react';
-import CategoryService from '../../service/CategoryService';
 
 const Logo = () => (
   <div className={styles.logo}>
@@ -36,9 +35,7 @@ const MenuItem = ({ id, title, url }: MenuItemType) => {
 };
 
 const Menu = () => {
-  const categoriesCMS = useSelector((state: RootState) => state.categories.items);
-  const categoryService = new CategoryService(categoriesCMS);
-  const mains = categoryService.getMainCategories();
+  const mains = useSelector((state: RootState) => state.categories.items.mains);
 
   const items: MenuItemType[] = [
     {

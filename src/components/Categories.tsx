@@ -6,7 +6,7 @@ import { showCategoryState } from './Layout/Navbar';
 import { NavLink } from 'react-router-dom';
 
 export const Categories = (props: { showCategories: showCategoryState }) => {
-  const categoriesCMS = useSelector((state: RootState) => state.categories.items);
+  const categoriesCMS = useSelector((state: RootState) => state.categories.items.all);
   if (props.showCategories.show === false) {
     return <></>;
   }

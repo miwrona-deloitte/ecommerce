@@ -7,6 +7,7 @@ import cartSlice from './cartSlice';
 import minicartSlice from './minicartSlice';
 import categoriesSlice from './categoriesSlice';
 import { Category } from '../model/Catalog/Category';
+import { MenuItemType } from '../components/Layout/Navbar';
 
 const store = configureStore({
   reducer: {
@@ -29,7 +30,7 @@ export interface RootState {
   };
   minicart: { visible: boolean };
   categories: {
-    items: Category[];
+    items: { all: Category[]; mains: MenuItemType[] };
   };
 }
 export const cartActions = cartSlice.actions;
